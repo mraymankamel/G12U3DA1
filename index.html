@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <!-- Theme Name: Platinum Crystal (Titanium V.Max - Print Master V.MAX) - FULLY WORKING -->
+    <!-- Theme Name: Platinum Crystal (Titanium V.Max - Print Master V.MAX) - PERFECTED AUDIT -->
     <title>🌟 التحدي الأكبر 🚀</title>
 
     <meta property="og:title" content="🌟 التحدي الأكبر 🚀">
@@ -50,8 +50,10 @@
         /* Header Setup */
         header { padding: 75px 20px 30px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; border-bottom: 1px solid rgba(0,0,0,0.05); position: relative; }
         
-        .top-bar-controls { position: absolute; top: 20px; left: 0; width: 100%; padding: 0 20px; display: flex; justify-content: space-between; align-items: flex-start; z-index: 20; }
-        .time-controls, .eye-care-controls { display: flex; align-items: center; gap: 8px; direction: ltr; }
+        /* 🔥 PERFECTED TOP BAR CONTROLS (Timer/Pause/Hide on Left, A+/A- on Right) 🔥 */
+        .top-bar-controls { position: absolute; top: 20px; left: 0; width: 100%; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; z-index: 20; }
+        .left-controls { display: flex; align-items: center; gap: 8px; direction: ltr; }
+        .right-controls { display: flex; align-items: center; gap: 8px; direction: ltr; }
         
         header img { width: 115px; height: 115px; object-fit: contain; background-color: #FFFFFF !important; padding: 6px; border-radius: 50%; border: 3px solid var(--accent); box-shadow: 0 10px 25px var(--accent-glow); cursor: pointer; flex-shrink: 0; aspect-ratio: 1/1; }
         header h1 { font-family: 'Outfit', sans-serif; font-size: 32px; font-weight: 900; margin: 10px 0 0; direction: ltr;}
@@ -84,12 +86,10 @@
         .welcome-card { background: #FFFFFF; border-radius: 20px; padding: 45px 25px; margin-bottom: 30px; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 10px 30px rgba(0,0,0,0.02); }
         .welcome-card h3 { font-size: 26px; font-weight: 900; color: var(--accent); margin-bottom: 20px;}
         
-        /* Time Attack Grid (Column) */
         .ta-grid { display: flex; flex-direction: column; gap: 12px; margin-bottom: 30px; }
         .ta-btn { background: #FFFFFF; color: var(--text-muted); border: 2px solid #E2E8F0; padding: 16px; font-size: 16px; border-radius: 14px; font-weight: 800; font-family: 'Outfit', 'Cairo'; cursor: pointer; transition: 0.3s;}
         .ta-btn.active { background: var(--accent-glow); color: var(--accent); border-color: var(--accent); box-shadow: 0 5px 15px var(--accent-glow); transform: scale(1.02); }
 
-        /* Avatar Grid (Strict Single Row) */
         .avatar-grid { display: flex; justify-content: center; align-items: center; gap: 15px; margin-bottom: 35px; flex-wrap: nowrap; overflow-x: auto; padding-bottom: 5px;}
         .avatar-option { font-size: 34px; padding: 14px 20px; background: #FFFFFF; border-radius: 16px; cursor: pointer; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 4px 12px rgba(0,0,0,0.02); transition: 0.3s; flex-shrink: 0;}
         .avatar-option.selected { background: #F8FAFC; border-color: var(--accent); box-shadow: 0 10px 25px var(--accent-glow); transform: scale(1.1) translateY(-5px);}
@@ -99,7 +99,6 @@
 
         #quiz-screen, #result-screen { display: none; }
         
-        /* 🔥 PROGRESS BAR & AVATAR FIX 🔥 */
         .hud-progress-wrapper { background: #FFFFFF; border: 1px solid rgba(0,0,0,0.05); border-radius: 16px; padding: 20px 24px 30px; margin-bottom: 35px; box-shadow: 0 10px 25px rgba(0,0,0,0.02); position: relative; }
         .hud-progress-wrapper::before { content: ''; position: absolute; top: 0; right: 0; width: 6px; height: 100%; background: var(--accent); border-radius: 0 16px 16px 0; }
         .hud-stats { display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 2; direction: rtl; flex-wrap: wrap; gap: 10px; }
@@ -121,7 +120,6 @@
         .option-item.selected .opt-letter { background: var(--accent); color: #FFFFFF; }
         .opt-text { font-family: 'Outfit'; font-weight: 600; font-size: 19px; }
 
-        /* Default Desktop Buttons */
         .action-btns { display: flex; flex-direction: row-reverse; justify-content: space-between; gap: 20px; direction: ltr;}
         .btn { padding: 20px 30px; border-radius: 16px; font-weight: 900; font-size: 17px; border: 1px solid var(--accent); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-family: 'Outfit', 'Cairo'; text-transform: uppercase; transition: 0.3s; }
         .btn-outline { background: transparent; color: var(--accent); }
@@ -363,14 +361,20 @@
     
     <header class="no-print">
         <div class="top-bar-controls">
-            <div class="time-controls" id="timer-container" style="display: none;">
-                <div class="timer-box" id="timer-box"><div class="time-dot"></div><span id="timer-text">--:--</span></div>
-                <button type="button" class="icon-btn" id="btn-pause" onclick="togglePause()" title="إيقاف مؤقت">⏸️</button>
-                <button type="button" class="icon-btn" id="btn-timer-view" onclick="toggleTimerView()" title="إخفاء الوقت">⏱️</button>
+            <!-- Left Controls: Timer, Pause, Hide Timer -->
+            <div class="left-controls">
+                <div class="time-controls" id="timer-container" style="display: none;">
+                    <div class="timer-box" id="timer-box"><div class="time-dot"></div><span id="timer-text">--:--</span></div>
+                    <button type="button" class="icon-btn" id="btn-pause" onclick="togglePause()" title="إيقاف مؤقت">⏸️</button>
+                    <button type="button" class="icon-btn" id="btn-timer-view" onclick="toggleTimerView()" title="إخفاء الوقت">⏱️</button>
+                </div>
             </div>
-            <div class="eye-care-controls" id="eye-care-container" style="display: none;">
-                <button type="button" class="icon-btn" onclick="changeFontSize(2)" title="تكبير الخط">A+</button>
-                <button type="button" class="icon-btn" onclick="changeFontSize(-2)" title="تصغير الخط">A-</button>
+            <!-- Right Controls: Font Size A+ / A- -->
+            <div class="right-controls">
+                <div class="eye-care-controls" id="eye-care-container" style="display: none;">
+                    <button type="button" class="icon-btn" onclick="changeFontSize(2)" title="تكبير الخط">A+</button>
+                    <button type="button" class="icon-btn" onclick="changeFontSize(-2)" title="تصغير الخط">A-</button>
+                </div>
             </div>
         </div>
 
@@ -659,8 +663,6 @@ const rawData = [
     { q: "60. I traveled by train, but I ........ by car.", options: ["might have traveled", "could have traveled", "could travel", "can travel"], answer: 1, rule: "Unfulfilled Past Ability", exp: "<div class='exp-en'>💡 <b>Explanation:</b> 'could have traveled' means I had the ability/choice to do it but chose not to.</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> (كان يقدر بس معملش).. كان يقدر يسافر بالعربية بس اختار القطر (could have traveled).</div>", zatona: "كان عندي القدرة أسافر بالعربية بس اخترت القطر بمزاجي (could have + PP)." }
 ];
 
-let typeInterval = null;
-
 let timeAttackLevel = 0;
 let isTimeAttack = false;
 
@@ -750,6 +752,9 @@ function startQuiz() {
     document.getElementById("hud-name").innerText = studentName;
     document.getElementById("hud-moving-avatar").innerText = selectedAvatar;
     document.getElementById("print-doc-student").innerText = studentName;
+    
+    // 🔥 AUDIT FIX: Sync Avatar on Result Screen 🔥
+    document.getElementById("res-avatar").innerText = selectedAvatar;
 
     totalSeconds = quizData.length * 240; 
     if (!isTimeAttack) {
@@ -767,7 +772,6 @@ function loadQuestion() {
     const item = quizData[currentQuestion];
     const optionsList = document.getElementById("options-list");
     
-    if (typeInterval) clearInterval(typeInterval); 
     optionsList.classList.remove("show-options"); 
     optionsList.innerHTML = "";
 
@@ -783,7 +787,9 @@ function loadQuestion() {
     document.getElementById("question-text-content").innerText = item.q;
     optionsList.classList.add("show-options");
     document.getElementById("progress-count").innerText = `Q: ${currentQuestion + 1} / ${quizData.length}`;
-    document.getElementById("energy-bar").style.width = `${Math.round(((currentQuestion + 1) / quizData.length) * 100)}%`;
+    
+    let percentProgress = Math.round(((currentQuestion + 1) / quizData.length) * 100);
+    document.getElementById("energy-bar").style.width = `${percentProgress}%`;
 
     document.getElementById("prev-btn").disabled = currentQuestion === 0;
     if(isTimeAttack) document.getElementById("prev-btn").style.display = "none";
@@ -811,7 +817,7 @@ function togglePause() {
     else {
         if (pauseCount >= 3) { alert("استنفدت كل محاولات الإيقاف (3/3)!"); return; }
         isPaused = true; pauseCount++; clearInterval(timerInterval);
-        document.getElementById('pause-count-msg').innerText = `استخدمت (${pauseCount} من 3) محاولات إيقاف.`;
+        document.getElementById('pause-count-msg').innerText = `استخدمت (${pauseCount} من 3) محاولات الإيقاف.`;
         document.getElementById('pause-modal').style.display = 'flex';
     }
 }
@@ -915,7 +921,8 @@ function calculateScore() {
         document.body.className = "theme-1"; 
         
         document.getElementById("res-name").innerText = studentName;
-        document.getElementById("print-doc-score").innerText = `${score} / ${quizData.length}`;
+        // 🔥 AUDIT FIX: Synchronized Print Score ID 🔥
+        document.getElementById("print-score-out").innerText = `${score} / ${quizData.length}`;
         document.getElementById("score-percentage").innerText = `${score} / ${quizData.length}`;
         document.getElementById("score-percent-text").innerText = `Accuracy: ${percent}%`;
         
