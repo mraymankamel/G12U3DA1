@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <!-- Theme Name: Platinum Crystal (Titanium V.Max - Print Engine V.1.5) -->
+    <!-- Theme Name: Platinum Crystal (Titanium V.Max - Print Master Engine V.MAX Edition) -->
     <title>🌟 التحدي الأكبر 🚀</title>
 
     <meta property="og:title" content="🌟 التحدي الأكبر 🚀">
@@ -14,7 +14,9 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     
     <style>
-        /* 💎 Platinum Crystal Theme */
+        /* ========================================================
+           💎 UI THEME: Platinum Crystal (Titanium V.Max)
+           ======================================================== */
         :root {
             --bg-dark: #F8FAFC; 
             --glass-bg: rgba(255, 255, 255, 0.95);
@@ -63,13 +65,12 @@
         .icon-btn:hover { border-color: var(--accent); color: var(--accent); background: #F8FAFC; box-shadow: 0 5px 15px var(--accent-glow);}
         .eye-care-controls { position: absolute; top: 20px; right: 20px; display: flex; gap: 8px; z-index: 20;}
 
-        /* Smart Cheers */
         .cheer-wrapper { position: fixed; top: -120px; right: 20px; z-index: 99999; pointer-events: none; transition: top 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         .cheer-wrapper.show { top: 20px; }
         .cheer-bubble { background: #FFFFFF; backdrop-filter: blur(20px); border-radius: 16px; padding: 18px 24px; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 15px; border: 1px solid rgba(0,0,0,0.05); border-right: 5px solid var(--accent); box-shadow: 0 20px 40px rgba(0,0,0,0.08); direction: rtl; }
         .cheer-bubble img { grid-column: 2; grid-row: 1 / span 3; width: 60px; height: 60px; border-radius: 50%; border: 2px solid var(--accent); background: #FFFFFF !important; padding: 4px; object-fit: contain; aspect-ratio: 1/1; }
         .cheer-en { font-family:'Outfit', sans-serif; font-size:15px; font-weight:900; direction:ltr; text-align:left;}
-        .cheer-separator { width: 100%; height: 1px; background: rgba(0,0,0,0.05); border-bottom: 1px dashed rgba(0,0,0,0.05); margin: 6px 0;}
+        .cheer-separator { grid-column: 1; width: 100%; height: 1px; background: rgba(0,0,0,0.05); border-bottom: 1px dashed rgba(0,0,0,0.05); margin: 6px 0;}
         .cheer-ar { font-family:'Cairo', sans-serif; font-size:14px; font-weight:800; color:var(--accent); direction:rtl; text-align:right;}
 
         @keyframes blink { 0%, 100% {opacity:1;} 50% {opacity:0.2;} }
@@ -79,7 +80,8 @@
         .welcome-card { background: #FFFFFF; border-radius: 20px; padding: 45px 25px; margin-bottom: 30px; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 10px 30px rgba(0,0,0,0.02); }
         .welcome-card h3 { font-size: 26px; font-weight: 900; color: var(--accent); margin-bottom: 20px;}
         
-        .ta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 30px; }
+        /* 🔥 MODIFIED: Time Attack Grid Column Layout 🔥 */
+        .ta-grid { display: flex; flex-direction: column; gap: 12px; margin-bottom: 30px; }
         .ta-btn { background: #FFFFFF; color: var(--text-muted); border: 2px solid #E2E8F0; padding: 16px; font-size: 16px; border-radius: 14px; font-weight: 800; font-family: 'Outfit', 'Cairo'; cursor: pointer; transition: 0.3s;}
         .ta-btn.active { background: var(--accent-glow); color: var(--accent); border-color: var(--accent); box-shadow: 0 5px 15px var(--accent-glow); transform: scale(1.02); }
 
@@ -113,6 +115,8 @@
         .option-item.selected .opt-letter { background: var(--accent); color: #FFFFFF; }
         .opt-text { font-family: 'Outfit'; font-weight: 600; font-size: 19px; }
 
+        /* 🔥 MODIFIED: UI Action Buttons. Default Row-reverse for PC. 
+           Mobile will override to column-reverse. */
         .action-btns { display: flex; flex-direction: row-reverse; justify-content: space-between; gap: 20px; direction: ltr;}
         .btn { padding: 20px 30px; border-radius: 16px; font-weight: 900; font-size: 17px; border: 1px solid var(--accent); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-family: 'Outfit', 'Cairo'; text-transform: uppercase; transition: 0.3s; }
         .btn-outline { background: transparent; color: var(--accent); }
@@ -150,59 +154,93 @@
         .exp-separator { width: 100%; height: 1px; background: #E2E8F0; border-bottom: 1px dashed #CBD5E1; }
         .exp-ar { direction: rtl; text-align: right; color: var(--text-main); font-weight: 700; font-size: 16px; line-height: 1.7; }
         
-        .print-options-grid { display: none; }
-
         #cheat-modal, #pause-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.6); z-index: 999999; align-items: center; justify-content: center; backdrop-filter: blur(25px); }
         .cheat-content { background: #FFFFFF; padding: 50px; border-radius: 24px; text-align: center; max-width: 90%; width: 500px; border: 2px solid var(--error-color); box-shadow: 0 25px 50px rgba(0,0,0,0.1); }
 
-        /* 🖨️ Print Master Engine V.1.5 (A4, Header, Footer, Watermark) */
+        /* ========================================================
+           🖨️ PRINT MASTER ENGINE V.MAX (The Table Hack & A4 Settings)
+           ======================================================== */
+        
+        #print-container { display: none; } /* Hidden in UI */
+        .teacher-cp { display: none; }
+
         @media print {
-            @page { size: A4; margin: 25mm 15mm 25mm 15mm; @bottom-right { content: "Page " counter(page); font-family: 'Outfit'; font-weight: bold; color: #666; } }
-            body { background: #fff !important; color: #000 !important; }
-            .no-print, body > *:not(#app-container) { display: none !important; }
-            #app-container { box-shadow: none !important; border: none !important; margin: 0 !important; padding: 0 !important; background: transparent !important; }
-            header, .time-controls, .eye-care-controls, #start-screen, #quiz-screen, .score-card, .result-actions, h3 { display: none !important; }
+            @page { size: A4; margin: 0; }
+            body { background: #fff !important; color: #000 !important; margin: 0; padding: 0; }
+            .no-print, #app-container, .bg-orb, .bg-grid { display: none !important; }
             
-            #result-screen { display: block !important; margin-top: 100px; }
+            /* Print Wrapper Full A4 Width */
+            #print-container { display: block !important; width: 210mm; margin: 0 auto; background: transparent; box-shadow: none; border: none; }
+            
+            /* Watermark V.MAX */
+            .print-watermark { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0.08; z-index: 9999; pointer-events: none; -webkit-print-color-adjust: exact; text-align: center; }
+            .print-watermark img { width: 350px; height: 350px; border-radius: 50%; filter: grayscale(100%); margin-bottom: 20px;}
+            .print-watermark h1 { font-family: 'Outfit'; font-size: 70px; font-weight: 900; color: #000; }
 
-            /* Fixed Header for Print */
-            .print-header { position: fixed; top: 0; left: 0; right: 0; display: flex; justify-content: space-between; align-items: center; padding-bottom: 15px; border-bottom: 2px solid #E2E8F0; z-index: 1000; }
-            .ph-left { display: flex; align-items: center; gap: 15px; }
-            .ph-left img { width: 60px; height: 60px; border-radius: 50%; border: 2px solid #000; }
-            .ph-info { font-family: 'Outfit'; text-align: left; }
-            .ph-info strong { font-size: 18px; font-weight: 900; color: #000; display: block; }
-            .ph-info span { font-size: 13px; color: #666; text-transform: uppercase; letter-spacing: 1px; }
-            .ph-center { text-align: center; flex: 1; margin: 0 20px;}
-            .ph-center h2 { font-family: 'Outfit'; font-size: 22px; font-weight: 900; margin: 0 0 5px 0; color: #000; }
-            .ph-center p { font-family: 'Outfit', 'Cairo'; font-size: 14px; font-weight: 700; color: #444; margin: 0; }
-            .ph-right { width: 150px; } 
+            /* Table Structure for repeating Header/Footer */
+            table.print-table { width: 100%; border-collapse: collapse; }
+            thead.print-thead { display: table-header-group; }
+            tfoot.print-tfoot { display: table-footer-group; }
+            tbody.print-tbody { display: table-row-group; }
+            
+            .header-content { display: flex; align-items: center; gap: 15px; padding: 25mm 15mm 10mm; border-bottom: 2px solid #000; margin-bottom: 10mm; }
+            .header-content img { width: 60px; height: 60px; border-radius: 50%; border: 2px solid #000; }
+            .header-content div strong { font-family: 'Outfit'; font-size: 26px; font-weight: 900; display: block; color: #000; }
+            .header-content div span { font-family: 'Outfit'; font-size: 14px; color: #333; text-transform: uppercase; letter-spacing: 1px; }
 
-            /* Fixed Footer for Print */
-            .print-footer { position: fixed; bottom: 0; left: 0; right: 0; display: flex; justify-content: space-between; align-items: center; padding-top: 10px; border-top: 2px solid #E2E8F0; font-family: 'Outfit'; font-weight: bold; color: #000; font-size: 14px; z-index: 1000; }
+            .footer-content { display: flex; justify-content: space-between; align-items: center; padding: 5mm 15mm 25mm; border-top: 2px solid #000; font-family: 'Outfit'; font-weight: bold; font-size: 14px; color: #000; }
+            .page-number:after { counter-increment: page; content: "Page " counter(page); }
 
-            /* Fixed Watermark */
-            .print-watermark { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0.05; z-index: -1; text-align: center; pointer-events: none; }
-            .print-watermark img { width: 300px; height: 300px; border-radius: 50%; filter: grayscale(100%); margin-bottom: 20px;}
-            .print-watermark h1 { font-family: 'Outfit'; font-size: 60px; font-weight: 900; color: #000; }
+            /* Exam Title & Student Info (First Page Only) */
+            .exam-title-box { text-align: center; margin-bottom: 10mm; padding: 0 15mm;}
+            .exam-title-box h2 { font-family: 'Outfit'; font-size: 28px; font-weight: 900; color: #000; text-transform: uppercase; margin-bottom: 10px; }
+            .student-info-row { display: flex; align-items: center; justify-content: center; gap: 20px; font-family: 'Outfit', 'Cairo'; font-size: 16px; font-weight: 700; width: 100%; }
+            .info-field { display: flex; align-items: flex-end; flex: 1; }
+            .info-label { margin-right: 10px; white-space: nowrap; }
+            .info-line { border-bottom: 2px dotted #000; flex: 1; min-height: 20px; padding-bottom: 2px; text-align: center;}
 
-            .review-item { border: 1px solid #ccc !important; box-shadow: none !important; border-radius: 8px !important; padding: 20px !important; margin-bottom: 25px !important; background: #fff !important; }
-            .review-item * { color: #000 !important; }
+            /* Questions Layout V.MAX */
+            .print-q-container { padding: 0 15mm; }
+            .print-q-item { page-break-inside: avoid; margin-bottom: 20px; font-family: 'Outfit', 'Cairo'; }
+            .print-q-text { font-size: 18px; font-weight: 800; color: #000; margin-bottom: 10px; direction: ltr; text-align: left; }
+            
+            /* Two Column Options */
+            .print-options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; direction: ltr; }
+            .print-opt-item { display: flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 600; color: #000;}
+            .print-opt-letter { width: 30px; height: 30px; border-radius: 50%; border: 2px solid #000; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 14px;}
+            
+            /* Teacher Mode Styles */
+            body.teacher-mode-active .print-opt-item.is-correct-opt .print-opt-letter { background: #000 !important; color: #fff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            body.teacher-mode-active .print-opt-item.is-correct-opt .print-opt-text { text-decoration: underline; font-weight: 900;}
+            body.teacher-mode-active .print-rule-box { display: block !important; background: #f0f0f0 !important; border: 1px solid #000 !important; padding: 10px !important; border-radius: 8px !important; margin-top: 10px !important; font-family: 'Cairo'; font-size: 14px; font-weight: 700; direction: rtl; text-align: right; -webkit-print-color-adjust: exact;}
+            .print-rule-box { display: none; } /* Hidden by default */
 
-            /* MODE 1: Blank Exam */
-            body.print-blank-mode .ui-ans-box, body.print-blank-mode .explanation-box { display: none !important; }
-            body.print-blank-mode .print-options-grid { display: grid !important; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 15px; font-family: 'Outfit'; font-size: 16px; font-weight: 600; }
-            body.print-blank-mode .review-item.is-correct, body.print-blank-mode .review-item.is-wrong { border-left: 1px solid #ccc !important; }
-
-            /* MODE 2: Smart Notes */
-            body.print-notes-mode .student-ans { display: none !important; }
-            body.print-notes-mode .correct-ans { font-weight: 900 !important; border-bottom: 1px dashed #000; display: inline-block; padding-bottom: 4px; margin-top: 10px;}
-            body.print-notes-mode .explanation-box { background: #f9f9f9 !important; border: 1px solid #ddd !important; border-right: 4px solid #666 !important; margin-top: 15px !important; }
-            body.print-notes-mode .exp-ar { border-top: 1px dashed #ccc !important; padding-top: 10px !important; }
-            body.print-notes-mode .exp-separator { display: none !important; }
+            /* Bubble Sheet Styles */
+            .omr-container { display: none; page-break-before: always; padding: 0 15mm; font-family: 'Outfit'; }
+            body.omr-active .omr-container { display: block !important; }
+            .omr-title { text-align: center; font-size: 24px; font-weight: 900; margin-bottom: 20px; text-transform: uppercase; }
+            .omr-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px 30px; direction: ltr;}
+            .omr-row { display: flex; align-items: center; gap: 15px; }
+            .omr-q-num { font-weight: 900; font-size: 16px; width: 25px; text-align: right; }
+            .omr-bubbles { display: flex; gap: 5px; }
+            .omr-bubble { width: 20px; height: 20px; border-radius: 50%; border: 2px solid #000; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: bold; }
+            body.teacher-mode-active .omr-bubble.is-correct-bubble { background: #000 !important; color: #fff !important; -webkit-print-color-adjust: exact;}
         }
 
-        @media screen { .print-header, .print-footer, .print-watermark { display: none !important; } }
+        /* 🎛️ Teacher Control Panel (UI Only) */
+        @media screen {
+            .teacher-cp { display: flex; align-items: center; justify-content: space-between; background: #0F172A; padding: 15px 20px; border-radius: 12px; margin-bottom: 20px; color: #fff; direction: rtl; font-family: 'Cairo'; }
+            .cp-inputs { display: flex; gap: 15px; flex: 1; }
+            .cp-inputs input { padding: 10px 15px; border-radius: 8px; border: 1px solid #334155; background: #1E293B; color: #fff; font-family: 'Outfit', 'Cairo'; outline: none; }
+            .cp-actions { display: flex; gap: 10px; }
+            .cp-btn { background: #3B82F6; color: #fff; border: none; padding: 10px 15px; border-radius: 8px; cursor: pointer; font-family: 'Cairo'; font-weight: bold; transition: 0.2s; display: flex; align-items: center; gap: 5px;}
+            .cp-btn:hover { background: #2563EB; }
+            .cp-btn.btn-teacher { background: #F59E0B; } .cp-btn.btn-teacher:hover { background: #D97706; }
+            .cp-btn.btn-omr { background: #10B981; } .cp-btn.btn-omr:hover { background: #059669; }
+            .cp-btn.active { box-shadow: inset 0 0 10px rgba(0,0,0,0.5); opacity: 0.8;}
+        }
 
+        /* 📱 Mobile Adjustments */
         @media (max-width: 768px) {
             body { padding: 12px 6px; }
             .main-container { border-radius: 20px;}
@@ -214,11 +252,17 @@
             .icon-btn { width: 40px; height: 40px; }
             .eye-care-controls { top: 12px; right: 12px; }
             .cheer-bubble { padding: 14px 18px; }
+            
+            /* 🔥 MODIFIED: Column-reverse puts NEXT/SUBMIT at the very bottom on mobile */
             .action-btns { flex-direction: column-reverse; }
             .btn { width: 100%; }
+            
             .result-actions { grid-template-columns: 1fr; }
             .btn-full { grid-column: span 1; }
             .score-circle { width: 180px; height: 180px; font-size: 45px;}
+            .teacher-cp { flex-direction: column; gap: 15px; }
+            .cp-inputs { width: 100%; flex-direction: column; gap: 10px;}
+            .cp-actions { width: 100%; justify-content: space-between; }
         }
     </style>
 </head>
@@ -236,7 +280,7 @@
 </div>
 
 <div id="pause-modal">
-    <div class="cheat-content" style="border-color: var(--accent);">
+    <div class="cheat-content" style="border-color: var(--accent); box-shadow: 0 25px 50px var(--accent-glow);">
         <h1 style="color: var(--accent);">⏸️ إيقاف مؤقت</h1>
         <p id="pause-count-msg" style="color: var(--text-main); font-size: 18px; margin-bottom: 20px;"></p>
         <p style="color: var(--text-muted); font-size: 15px; margin-bottom: 30px;">رادار المراقبة لا يزال يعمل. الخروج من المتصفح سيسجل تحذيراً.</p>
@@ -244,28 +288,63 @@
     </div>
 </div>
 
-<div class="main-container" id="app-container">
-    
-    <!-- 🖨️ PRINT HEADER & WATERMARK & FOOTER 🖨️ -->
-    <div class="print-header">
-        <div class="ph-left">
-            <img src="https://lh3.googleusercontent.com/d/1BqwA44F0BAwWMSwBnBeDIkfkNgBEtif-" alt="Logo">
-            <div class="ph-info"><strong>Mr. Ayman Kamel</strong><span>English Language Educator</span></div>
-        </div>
-        <div class="ph-center">
-            <h2 id="print-doc-title">Platinum Crystal: Deductions & Modals (60 Qs)</h2>
-            <p>Student: <span id="print-doc-student"></span> | Score: <span id="print-doc-score"></span></p>
-        </div>
-        <div class="ph-right"></div>
-    </div>
+<!-- ========================================================
+     🖨️ PRINT MASTER ENGINE V.MAX CONTAINER
+     ======================================================== -->
+<div id="print-container">
     <div class="print-watermark">
         <img src="https://lh3.googleusercontent.com/d/1BqwA44F0BAwWMSwBnBeDIkfkNgBEtif-" alt="Watermark">
         <h1>Mr. Ayman Kamel</h1>
     </div>
-    <div class="print-footer">
-        <div>📞 01284749899</div>
-    </div>
+    <table class="print-table">
+        <thead class="print-thead">
+            <tr>
+                <td>
+                    <div class="header-content">
+                        <img src="https://lh3.googleusercontent.com/d/1BqwA44F0BAwWMSwBnBeDIkfkNgBEtif-" alt="Logo">
+                        <div><strong>Mr. Ayman Kamel</strong><span>English Language Educator</span></div>
+                    </div>
+                </td>
+            </tr>
+        </thead>
+        <tbody class="print-tbody">
+            <tr>
+                <td>
+                    <!-- Exam Title & Info (First page only logically, though table repeats header/footer) -->
+                    <div class="exam-title-box">
+                        <h2 id="print-title-out">DEDUCTION & MODALS (60 QS)</h2>
+                        <div class="student-info-row">
+                            <div class="info-field"><span class="info-label">Student Name:</span><div class="info-line"></div></div>
+                            <div class="info-field"><span class="info-label">Score:</span><div class="info-line" style="flex: 0.5;"></div><span style="margin-left: 10px;" id="print-score-out">/ 60</span></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Questions List -->
+                    <div class="print-q-container" id="print-q-list"></div>
 
+                    <!-- Bubble Sheet Section -->
+                    <div class="omr-container">
+                        <div class="omr-title">OMR Bubble Sheet</div>
+                        <div class="omr-grid" id="omr-grid"></div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot class="print-tfoot">
+            <tr>
+                <td>
+                    <div class="footer-content">
+                        <div>📞 01284749899</div>
+                        <div class="page-number"></div>
+                    </div>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+<div class="main-container" id="app-container">
+    
     <header class="no-print">
         <div class="time-controls" id="timer-container" style="display: none;">
             <div class="timer-box" id="timer-box"><div class="time-dot"></div><span id="timer-text">--:--</span></div>
@@ -299,6 +378,7 @@
                 <h3>🌟 خطوتك نحو القمة تبدأ هنا!</h3>
                 <p>تحدي استثنائي لقياس تركيزك الحقيقي في قواعد الاستنتاج. اقرأ التفاصيل بدقة واستعد لإثبات جدارتك.<br><br>هل تقبل التحدي وتستطيع الوصول للقمة؟</p>
             </div>
+            
             <h4 style="color: var(--text-main); font-weight: 800; margin-bottom: 15px; text-align: center;">اختار مستوى التحدي الزمني:</h4>
             <div class="ta-grid">
                 <button type="button" class="btn ta-btn" onclick="setTimeAttack(20, this)">⚡ 20ث (أساطير)</button>
@@ -306,6 +386,7 @@
                 <button type="button" class="btn ta-btn" onclick="setTimeAttack(45, this)">⏳ 45ث (أبطال)</button>
                 <button type="button" class="btn ta-btn active" onclick="setTimeAttack(0, this)">🛑 كلاسيك (وقت مفتوح)</button>
             </div>
+            
             <h4 style="color: var(--text-main); font-weight: 800; margin-bottom: 15px; text-align: center;">اختر مفتاح العبور الخاص بك:</h4>
             <div class="avatar-grid">
                 <div class="avatar-option selected" onclick="selectAvatar(this, '💎')">💎</div>
@@ -332,7 +413,7 @@
             <div class="station-card" id="q-box">
                 <div class="question-text">
                     <div class="question-text-wrapper"><span id="question-text-content" style="direction: ltr; display: inline-block;">--</span></div>
-                    <div class="tts-btn-container"><button type="button" class="icon-btn" style="border-color:var(--accent); color:var(--accent);" onclick="speakQuestion()">🔊</button></div>
+                    <div class="tts-btn-container"><button type="button" class="icon-btn" style="border-color:var(--accent); color:var(--accent); background: #FFF;" onclick="speakQuestion()">🔊</button></div>
                 </div>
                 <div class="options-list" id="options-list" style="direction: ltr;"></div>
             </div>
@@ -347,17 +428,23 @@
     <!-- Result Screen -->
     <div id="result-screen">
         
-        <div class="no-print" style="text-align: center;">
-            <div class="exam-title-display">
-                <span id="ui-exam-title">Platinum Crystal: Deductions & Modals (60 Qs)</span>
-                <span class="edit-icon no-print" onclick="editExamTitle()" title="تعديل اسم الامتحان">✏️</span>
+        <!-- 🎛️ Teacher Control Panel (Visible in Results) -->
+        <div class="teacher-cp no-print">
+            <div class="cp-inputs">
+                <input type="text" id="cp-title-in" value="DEDUCTION & MODALS (60 QS)" oninput="updatePrintVars()" placeholder="اسم الامتحان (للطباعة)">
+                <input type="text" id="cp-score-in" value="/ 60" oninput="updatePrintVars()" placeholder="الدرجة النهائية (مثال: / 60)">
             </div>
-            <div id="student-display-name"><span class="result-avatar" id="res-avatar">💎</span> <span id="res-name"></span></div>
+            <div class="cp-actions">
+                <button class="cp-btn btn-teacher" id="btn-t-mode" onclick="toggleTeacherMode()" title="وضع المعلم">👁️ Teacher Mode</button>
+                <button class="cp-btn btn-omr" id="btn-omr-mode" onclick="toggleOMR()" title="إظهار البابل شيت">📑 Bubble Sheet</button>
+                <button class="cp-btn" onclick="window.print()" title="طباعة">🖨️ Print Master</button>
+            </div>
         </div>
 
         <div class="score-card no-print">
             <div class="score-circle" id="score-percentage">0 / 0</div>
             <div id="score-percent-text">Accuracy: 0%</div>
+            <div id="student-display-name"><span class="result-avatar" id="res-avatar">💎</span> <span id="res-name"></span></div>
             <div class="scratch-container">
                 <div id="badge-award-box" class="badge-award">اخدش لترى حالتك</div>
                 <canvas id="scratch-canvas"></canvas>
@@ -366,18 +453,15 @@
         </div>
 
         <div class="result-actions no-print">
-            <!-- 🖨️ Print Master Engine V.1.5 Buttons -->
-            <button type="button" class="btn btn-outline" style="background:#F8FAFC; border-color:#E2E8F0; color:var(--text-main);" onclick="printBlankExam()">🖨️ طباعة كاختبار ورقي</button>
-            <button type="button" class="btn btn-outline" style="background:#F8FAFC; border-color:#E2E8F0; color:var(--text-main);" onclick="printSmartNotes()">📥 طباعة مذكرة الأخطاء (شرح)</button>
-            
             <button type="button" class="btn btn-solid btn-full" id="cert-btn" onclick="downloadCertificate()" style="display: none;">📜 استخراج شهادة النخبة</button>
             <button type="button" class="btn btn-outline btn-whatsapp" onclick="shareToTeacherWhatsApp()">👨‍🏫 إرسال التقرير لمستر أيمن</button>
             <button type="button" class="btn btn-outline btn-whatsapp" onclick="shareToParentWhatsApp()">👨‍👩‍👧 تقرير ولي الأمر</button>
+            <button type="button" class="btn btn-outline btn-full" style="color:var(--accent); border-color:var(--accent);" onclick="location.reload()">🔄 إعادة المحاولة</button>
         </div>
 
         <h3 class="no-print" style="text-align: right; color: var(--text-main); margin-top: 20px; border-bottom: 2px dashed rgba(0,0,0,0.1); padding-bottom: 12px; font-weight: 900;">📂 المراجعة اللحظية (Smart Revision):</h3>
         
-        <div id="review-list"></div>
+        <div id="review-list" class="no-print"></div>
     </div>
 </div>
 
@@ -386,30 +470,20 @@ const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxps3pkSIfSFL8rwhCNM
 
 function tryVibrate(pattern) { if (navigator.vibrate) try { navigator.vibrate(pattern); } catch(e){} }
 
-/* 🔥 Editable Title Functionality */
-let examTitle = "Platinum Crystal: Deductions & Modals (60 Qs)";
-function editExamTitle() {
-    let newTitle = prompt("أدخل اسم الامتحان لطباعته:", examTitle);
-    if(newTitle && newTitle.trim() !== "") {
-        examTitle = newTitle;
-        document.getElementById('ui-exam-title').innerText = examTitle;
-        document.getElementById('print-doc-title').innerText = examTitle;
-    }
+/* 🎛️ Teacher Control Panel Functions */
+function updatePrintVars() {
+    document.getElementById("print-title-out").innerText = document.getElementById("cp-title-in").value;
+    document.getElementById("print-score-out").innerText = document.getElementById("cp-score-in").value;
 }
 
-/* 🖨️ Print Master Engine Modes */
-function printBlankExam() {
-    document.body.classList.remove('print-notes-mode');
-    document.body.classList.add('print-blank-mode');
-    window.print();
-    document.body.classList.remove('print-blank-mode');
+function toggleTeacherMode() {
+    document.body.classList.toggle("teacher-mode-active");
+    document.getElementById("btn-t-mode").classList.toggle("active");
 }
 
-function printSmartNotes() {
-    document.body.classList.remove('print-blank-mode');
-    document.body.classList.add('print-notes-mode');
-    window.print();
-    document.body.classList.remove('print-notes-mode');
+function toggleOMR() {
+    document.body.classList.toggle("omr-active");
+    document.getElementById("btn-omr-mode").classList.toggle("active");
 }
 
 /* Audio & Init */
@@ -479,7 +553,7 @@ function triggerTeacherCheer() {
     wrapper.classList.add("show"); setTimeout(() => { wrapper.classList.remove("show"); }, 3500);
 }
 
-function triggerEasterEgg() { alert("💎 Platinum Print Master V.1.5 Active! 💎"); }
+function triggerEasterEgg() { alert("💎 Platinum Crystal Theme Active! 💎"); }
 
 function changeFontSize(change) {
     const root = document.documentElement;
@@ -490,66 +564,66 @@ function changeFontSize(change) {
 
 /* 🔥 EXACT DATA ARRAY - 60 Questions (Deduction & Modals) 🔥 */
 const rawData = [
-    { q: "1. The light in his study room is still on. He ........ working on his project.", options: ["can't be", "might have", "must be", "was"], answer: 2, rule: "Present Deduction (Sure)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> We are sure he is working now because the light is on, so we use 'must be'.</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> النور شغال يبقى (أكيد) هو بيذاكر، استنتاج مؤكد في المضارع (must be).</div>" },
-    { q: "2. You have just had a huge lunch! You ........ hungry now.", options: ["must be", "might be", "must have been", "can't be"], answer: 3, rule: "Present Deduction (Negative)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> Since you just ate a lot, it is impossible that you are hungry now. We use 'can't be'.</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> لسه واكل كتير يبقى (مستحيل) تكون جعان، استنتاج منفي في المضارع (can't be).</div>" },
-    { q: "3. I ........ my umbrella on the bus, but I can't remember exactly.", options: ["forgot", "might have forgotten", "must have forgotten", "can't have forgotten"], answer: 1, rule: "Past Deduction (Unsure)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> 'can't remember exactly' shows uncertainty in the past, so we use 'might have + P.P'.</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> مش فاكر بالظبط، يبقى ده (احتمال) في الماضي فنستخدم (might have forgotten).</div>" },
-    { q: "4. Sarah ........ at the party last night because she was in London.", options: ["can't have been", "might not be", "must have been", "may have been"], answer: 0, rule: "Past Deduction (Negative)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> She was in London, so it's impossible she was at the party. We use 'can't have + P.P'.</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> كانت في لندن، يبقى (مستحيل) تكون في الحفلة، استنتاج منفي في الماضي (can't have been).</div>" },
-    { q: "5. Your mother ........ a great cook. You always hurry home to eat!", options: ["isn't", "may not be", "must be", "can't be"], answer: 2, rule: "Present Deduction (Sure)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> You hurry home to eat, so we are sure she is a great cook ('must be').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> بترجع جري عشان تاكل، يبقى مامتك (أكيد) طباخة ماهرة (must be).</div>" },
-    { q: "6. This ........ Ola's phone. Hers is black, not silver.", options: ["must be", "can't be", "may have been", "must have been"], answer: 1, rule: "Present Deduction (Negative)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> The phone colors don't match, so it's impossible this is hers ('can't be').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> الألوان مش متطابقة، يبقى (مستحيل) يكون تليفونها (can't be).</div>" },
-    { q: "7. The lights are all off and the car isn't in the driveway. Omar ........ out.", options: ["can't go", "can't have gone", "must go", "must have gone"], answer: 3, rule: "Past Deduction (Sure)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> The evidence shows he is not there, so we are sure he left in the past ('must have gone').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> مفيش نور ولا عربية، يبقى (أكيد) هو خرج، استنتاج مؤكد في الماضي (must have gone).</div>" },
-    { q: "8. Malak ........ the milk—she was out all day.", options: ["can't have drunk", "must drink", "must have drunk", "can't drink"], answer: 0, rule: "Past Deduction (Negative)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> She wasn't home, so it's impossible she drank it ('can't have drunk').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> كانت برة طول اليوم، يبقى (مستحيل) تكون هي اللي شربته (can't have drunk).</div>" },
-    { q: "9. Ahmed ........ his keys. He has been looking for them for an hour.", options: ["might lose", "can't have lost", "must have lost", "can't lose"], answer: 2, rule: "Past Deduction (Sure)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> He is looking for them, so we are sure he lost them ('must have lost').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> بيدور عليهم، يبقى (أكيد) ضيعهم، استنتاج مؤكد في الماضي (must have lost).</div>" },
-    { q: "10. Ali was here a second ago. He ........ far.", options: ["must be", "should have gone", "must have gone", "can't have gone"], answer: 3, rule: "Past Deduction (Negative)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> He just left, so it's impossible he traveled far ('can't have gone').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> لسه كان هنا من ثانية، يبقى (مستحيل) يكون بعد، استنتاج منفي في الماضي (can't have gone).</div>" },
-    { q: "11. I'm not sure where my phone is. I ........ it at the office.", options: ["must leave", "may have left", "can't have left", "couldn't have left"], answer: 1, rule: "Past Deduction (Unsure)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> 'not sure' indicates a possibility in the past ('may have left').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> مش متأكد، يبقى (احتمال) أكون سيبته، نستخدم (may have left).</div>" },
-    { q: "12. He spoke to me in perfect French. He ........ in France for a long time.", options: ["must have lived", "should have lived", "must live", "may live"], answer: 0, rule: "Past Deduction (Sure)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> His perfect French makes us sure he lived there ('must have lived').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> بيتكلم فرنساوي ممتاز، يبقى (أكيد) عاش هناك زمان (must have lived).</div>" },
-    { q: "13. She looks very sad. She ........ some bad news.", options: ["can't hear", "might not hear", "can't have heard", "must have heard"], answer: 3, rule: "Past Deduction (Sure)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> She is sad now because of something that definitely happened ('must have heard').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> شكلها حزين، يبقى (أكيد) سمعت خبر وحش (must have heard).</div>" },
-    { q: "14. That woman ........ be his mother; she looks too young!", options: ["might", "can't", "must", "shouldn't"], answer: 1, rule: "Present Deduction (Negative)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> She looks young, so it's impossible she is his mother ('can't').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> شكلها صغير جداً، يبقى (مستحيل) تكون أمه (can't).</div>" },
-    { q: "15. He ........ very fast when the accident happened; the car is completely destroyed.", options: ["can't have driven", "must be driving", "must have been driving", "didn't drive"], answer: 2, rule: "Past Deduction (Continuous)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> The destruction means we are sure he was driving fast at that moment in the past ('must have been driving').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> العربية متدمرة، يبقى (أكيد) كان بيسوق بسرعة وقت الحادثة (must have been driving).</div>" },
-    { q: "16. I ........ the exam, but I wasted the time.", options: ["could have passed", "must have passed", "shouldn't have passed", "can't have passed"], answer: 0, rule: "Unfulfilled Past Ability", exp: "<div class='exp-en'>💡 <b>Explanation:</b> 'could have + P.P' is used for an ability in the past that wasn't used.</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> كان عندي القدرة أنجح بس ضيعت الوقت، نستخدم (could have passed).</div>" },
-    { q: "17. Mr. Osama ........ near here because he always walks to work.", options: ["must have lived", "may have lived", "can't live", "must live"], answer: 3, rule: "Present Deduction (Sure)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> He walks to work, so we are sure he currently lives nearby ('must live').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> بيمشي للشغل كل يوم، يبقى (أكيد) هو عايش قريب دلوقتي (must live).</div>" },
-    { q: "18. I'm not sure when Lamia will come. She ........ at any time.", options: ["must arrive", "could arrive", "may have arrived", "can't arrive"], answer: 1, rule: "Future Possibility", exp: "<div class='exp-en'>💡 <b>Explanation:</b> 'not sure' for a future event uses 'could' or 'might' + base verb.</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> مش متأكد من موعد وصولها في المستقبل، فنستخدم (could arrive).</div>" },
-    { q: "19. You ........ the door. It was open when I got home.", options: ["might have locked", "must have locked", "can't have locked", "can't lock"], answer: 2, rule: "Past Deduction (Negative)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> It was open, so it's impossible you locked it ('can't have locked').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> الباب كان مفتوح، يبقى (مستحيل) تكون قفلته (can't have locked).</div>" },
-    { q: "20. Kamal ........ by train yesterday. Who knows?", options: ["might have traveled", "must have traveled", "shouldn't have traveled", "can't have traveled"], answer: 0, rule: "Past Deduction (Unsure)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> 'Who knows?' implies uncertainty, so we use 'might have + P.P'.</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> عبارة (مين عارف؟) بتدل على الاحتمال في الماضي، نختار (might have traveled).</div>" },
-    { q: "21. Since you have been working for hours, you ........ tired now.", options: ["might have been", "must have been", "can't be", "must be"], answer: 3, rule: "Present Deduction (Sure)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> You worked for hours, so we are sure you are tired right now ('must be').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> شغال بقالك ساعات، يبقى (أكيد) إنت تعبان دلوقتي (must be).</div>" },
-    { q: "22. Winning the first prize last year ........ Ali very happy.", options: ["will have made", "must have made", "can't make", "mustn't make"], answer: 1, rule: "Past Deduction (Sure)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> It's logical and certain that winning made him happy in the past ('must have made').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> الفوز بالجايزة (أكيد) خلاه مبسوط زمان (must have made).</div>" },
-    { q: "23. It's strange that he hasn't phoned. He ........ lost his phone.", options: ["might have", "must have been", "can't have", "should have"], answer: 0, rule: "Past Deduction (Unsure)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> We don't know why he didn't phone, so it's a possibility ('might have lost').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> متصلش ليه؟ (احتمال) يكون ضيع تليفونه (might have).</div>" },
-    { q: "24. Why did you run across the road? You ........ injured.", options: ["must have", "can't have", "could have been", "should have"], answer: 2, rule: "Unfulfilled Past Possibility", exp: "<div class='exp-en'>💡 <b>Explanation:</b> 'could have been' shows something that was possible but didn't happen (a danger avoided).</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> بتجري في الشارع ليه؟ إنت (كان ممكن) تتصاب بس محصلش (could have been).</div>" },
-    { q: "25. The streets are very wet this morning. It ........ heavily during the night.", options: ["must rain", "must have rained", "can't have rained", "should have rained"], answer: 1, rule: "Past Deduction (Sure)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> The wet streets are strong evidence that it definitely rained ('must have rained').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> الشوارع غرقانة مية، يبقى (أكيد) مطرت جامد بالليل (must have rained).</div>" },
-    { q: "26. They ........ the match; they are celebrating in the streets!", options: ["must win", "must have won", "can't have won", "can't win"], answer: 1, rule: "Past Deduction (Sure)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> Celebrating is proof that they definitely won the match ('must have won').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> بيحتفلوا في الشارع، يبقى (أكيد) كسبوا الماتش (must have won).</div>" },
-    { q: "27. The car is still in the garage, so they ........ left yet.", options: ["must have", "might have", "must have been", "can't have"], answer: 3, rule: "Past Deduction (Negative)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> The car is here, so it is impossible they have left ('can't have left').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> العربية موجودة، يبقى (مستحيل) يكونوا مشيوا (can't have).</div>" },
-    { q: "28. I can't find my keys. They ........ in the library.", options: ["must have been left", "must have left", "had to be left", "should have left"], answer: 0, rule: "Past Deduction (Passive)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> The keys are the subject, so we need the passive form ('must have been left').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> المفاتيح (تُترك) مبني للمجهول، إذن (أكيد اتسابوا) في المكتبة (must have been left).</div>" },
-    { q: "29. My uncle received the order yesterday. It ........ to the wrong address.", options: ["could have sent", "must have been sent", "can't have been sent", "can't have sent"], answer: 2, rule: "Past Deduction (Negative Passive)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> Since he received it, it's impossible it was sent to the wrong address ('can't have been sent').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> طالما استلم الأوردر، يبقى (مستحيل) يكون اتبعت لعنوان غلط (can't have been sent).</div>" },
-    { q: "30. I ........ the vase! I was in a completely different room when it broke.", options: ["could have broken", "must have broken", "mustn't have broken", "can't have broken"], answer: 3, rule: "Past Deduction (Negative)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> I was not in the room, so it's impossible I broke it ('can't have broken').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> كنت في أوضة تانية، يبقى (مستحيل) أكون أنا اللي كسرته (can't have broken).</div>" },
-    { q: "31. The team ........ the championship if their star player hadn't been injured in the final minutes.", options: ["could have won", "can't have won", "couldn't have won", "must have won"], answer: 0, rule: "Unfulfilled Past Possibility", exp: "<div class='exp-en'>💡 <b>Explanation:</b> It was possible for them to win if he wasn't injured ('could have won').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> (كان ممكن) يكسبوا لو اللاعب متصابش، التعبير عن قدرة لم تتحقق (could have won).</div>" },
-    { q: "32. \"I can't find my keys anywhere.\" - \"Check the car; you ........ them in the ignition.\"", options: ["couldn't have left", "can't have left", "could have left", "must leave"], answer: 2, rule: "Past Deduction (Unsure)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> Suggesting a possibility of what happened ('could have left').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> اقتراح مبني على احتمال، (ممكن) تكون سيبتهم في العربية (could have left).</div>" },
-    { q: "33. It ........ better! The weather was perfect, the food was delicious, and everyone had a great time.", options: ["could have gone", "couldn't have gone", "can't have gone", "must go"], answer: 1, rule: "Idiomatic Deduction", exp: "<div class='exp-en'>💡 <b>Explanation:</b> 'couldn't have gone better' means it was absolutely perfect.</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> تعبير معناه (مكنش ممكن الأمور تمشي أحسن من كده) لأن كل حاجة كانت مثالية (couldn't have gone).</div>" },
-    { q: "34. Sarah ........ the news yet; she's been on a flight without Wi-Fi for the last ten hours.", options: ["could have heard", "couldn't have heard", "can't have heard", "both b and c"], answer: 3, rule: "Past Deduction (Negative)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> Both 'couldn't have' and 'can't have' express that it is impossible she heard the news.</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> مفيش نت في الطيارة، يبقى (مستحيل) تكون سمعت الأخبار، والاتنين صح.</div>" },
-    { q: "35. Which sentence is correctly structured?", options: ["He wasn't at school yesterday. He must be ill.", "He wasn't at school yesterday. He must have been ill.", "He wasn't at school yesterday. He can't be ill.", "He wasn't at school yesterday. He had to be ill."], answer: 1, rule: "Past Deduction Match", exp: "<div class='exp-en'>💡 <b>Explanation:</b> The first sentence is in the past, so the deduction must also refer to the past ('must have been').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> الجملة الأولى ماضي (wasn't)، يبقى الاستنتاج لازم يكون ماضي (must have been).</div>" },
-    { q: "36. \"He looks very tired. He must have slept well last night.\" Which of the following corrects the mistake in this sentence?", options: ["slept -> sleep", "must -> can't", "looks -> looked", "last night -> tonight"], answer: 1, rule: "Correction (Logic)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> If he is tired, it is impossible he slept well. 'must' changes to 'can't'.</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> المعنى غلط، شكله تعبان يبقى (مستحيل) يكون نام كويس، نصحح must لـ can't.</div>" },
-    { q: "37. \"She got the highest mark in the test. She might have studied very hard.\" Which of the following corrects the mistake in this sentence?", options: ["might -> must", "got -> gets", "studied -> study", "highest -> higher"], answer: 0, rule: "Correction (Logic)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> Getting the highest mark is strong evidence, making us sure she studied hard. 'might' -> 'must'.</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> جابت أعلى درجة يبقى (أكيد) ذاكرت، مش احتمال. فنصحح might لـ must.</div>" },
-    { q: "38. \"Hany went to school on foot. He must have gone by car.\" Which of the following corrects the mistake in this sentence?", options: ["must have gone -> went", "school -> the school", "went -> should go", "must -> can't"], answer: 3, rule: "Correction (Logic)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> He walked, so it's impossible he took a car. 'must' -> 'can't'.</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> هو راح ماشي، يبقى (مستحيل) يكون راح بالعربية. نصحح must لـ can't.</div>" },
-    { q: "39. Which sentence is correctly structured to express deduction?", options: ["You must finish your homework before dinner.", "She mustn't visit her grandmother tomorrow.", "He must be very tired after working all day.", "You should see a doctor if you feel sick."], answer: 2, rule: "Deduction vs Obligation", exp: "<div class='exp-en'>💡 <b>Explanation:</b> Option C is the only sentence making a logical guess (deduction) based on evidence. The others are advice/obligation.</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> الجملة C هي الوحيدة اللي بتعبر عن استنتاج (أكيد تعبان بعد الشغل)، الباقي نصيحة أو إلزام.</div>" },
-    { q: "40. Which sentence is correctly structured?", options: ["He is a brilliant surgeon. He ought to have been a clever student.", "He is a brilliant surgeon. He must have been a clever student.", "He is a brilliant surgeon. He can't have been a clever student.", "He is a brilliant surgeon. He must be a clever student."], answer: 1, rule: "Past Deduction based on Present Evidence", exp: "<div class='exp-en'>💡 <b>Explanation:</b> Being a brilliant surgeon now means we are sure he was a clever student in the past ('must have been').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> هو جراح شاطر دلوقتي، يبقى (أكيد) كان طالب ذكي زمان (must have been).</div>" },
-    { q: "41. She ........ at home; her lights are off.", options: ["mustn't have been", "must have been", "must be", "can't be"], answer: 3, rule: "Present Deduction (Negative)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> The lights are off now, so it is impossible she is home ('can't be').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> النور مطفي، يبقى (مستحيل) تكون في البيت دلوقتي (can't be).</div>" },
-    { q: "42. They ........ tired after walking all day in the heat.", options: ["can't be", "must be", "aren't", "can't have been"], answer: 1, rule: "Present Deduction (Sure)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> Walking all day guarantees they are tired now ('must be').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> مشيوا طول اليوم في الحر، يبقى (أكيد) هما تعبانين (must be).</div>" },
-    { q: "43. This ........ the right place; the map shows we're still far away.", options: ["must be", "must have been", "can't be", "could have been"], answer: 2, rule: "Present Deduction (Negative)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> The map shows we are far, so it's impossible this is the right place ('can't be').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> الخريطة بتقول إننا لسه بعيد، يبقى (مستحيل) ده يكون المكان الصح (can't be).</div>" },
-    { q: "44. The streets are flooded. There ........ a heavy storm last night.", options: ["must have been", "must be", "can't be", "can't have been"], answer: 0, rule: "Past Deduction (Sure)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> The flooded streets make us sure there was a storm ('must have been').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> الشوارع غرقانة، يبقى (أكيد) كان في عاصفة امبارح (must have been).</div>" },
-    { q: "45. They ........ the announcement—they didn't show up.", options: ["must have heard", "can't have heard", "could have heard", "could hear"], answer: 1, rule: "Past Deduction (Negative)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> They didn't show up, so it is impossible they heard it ('can't have heard').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> مجوش، يبقى (مستحيل) يكونوا سمعوا الإعلان (can't have heard).</div>" },
-    { q: "46. She ........ about the meeting yesterday. It's likely.", options: ["can't have forgotten", "must have forgotten", "forget", "might have forgotten"], answer: 3, rule: "Past Deduction (Unsure)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> 'It's likely' indicates a strong possibility, but not absolute certainty ('might have forgotten').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> كلمة likely بتعبر عن (احتمال كبير) فنستخدم (might have forgotten).</div>" },
-    { q: "47. Many people in poor regions ........ climate change, but they suffer the most.", options: ["can't have caused", "must have caused", "must cause", "should have caused"], answer: 0, rule: "Past Deduction (Negative)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> It is logically impossible that poor regions caused global climate change ('can't have caused').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> (مستحيل) يكونوا هما اللي سببوا التغير المناخي لأنهم فقراء (can't have caused).</div>" },
-    { q: "48. That community ........ serious flooding after last week's hurricane.", options: ["can't have experienced", "must experience", "couldn't have experienced", "must have experienced"], answer: 3, rule: "Past Deduction (Sure)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> A hurricane definitely causes flooding, so we are sure they experienced it ('must have experienced').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> بعد الإعصار، (أكيد) المنطقة دي اتعرضت لفيضان (must have experienced).</div>" },
-    { q: "49. I'm sure this data ........ that sea level is rising.", options: ["may prove", "must be proven", "must prove", "must have proven"], answer: 2, rule: "Present Deduction (Sure)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> 'I'm sure' + present fact means we use 'must' + base verb.</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> أنا متأكد إن البيانات دي (بتثبت) كذا في المضارع (must prove).</div>" },
-    { q: "50. Activists ........ frustrated when leaders ignore their demands.", options: ["must feel", "can't feel", "don't feel", "must have felt"], answer: 0, rule: "Present Deduction (Sure)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> It's a logical certainty that they feel frustrated ('must feel').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> (أكيد) بيحسوا بالإحباط لما محدش بيسمعهم (must feel).</div>" },
-    { q: "51. No survivors have been recorded in the avalanche catastrophe. All the climbers ........ buried under thick layers of ice.", options: ["must have", "can't have", "can't have been", "must have been"], answer: 3, rule: "Past Deduction (Sure - Passive)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> No survivors means we are sure they were buried. It's passive ('must have been').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> مفيش ناجين، يبقى المتسلقين (أكيد اندفنوا) تحت التلج (مبني للمجهول).</div>" },
-    { q: "52. The lights are off and the door is locked; the office ........ for the day.", options: ["should be closing", "must be closed", "must close", "should close"], answer: 1, rule: "Present Deduction (Sure - State)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> The visual evidence proves the state of the office is closed ('must be closed').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> الباب مقفول والنور مطفي، يبقى (أكيد) المكتب مغلق (must be closed).</div>" },
-    { q: "53. The flowers are dead. He ........ them.", options: ["must have watered", "had to water", "can't have watered", "shouldn't have watered"], answer: 2, rule: "Past Deduction (Negative)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> They are dead, so it is impossible he watered them ('can't have watered').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> الورد مات، يبقى (مستحيل) يكون سقاه (can't have watered).</div>" },
-    { q: "54. She looks unhappy. She ........ the job.", options: ["can't have got", "must have got", "may have got", "shouldn't have got"], answer: 0, rule: "Past Deduction (Negative)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> Unhappy appearance means it's impossible she got the job ('can't have got').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> زعلانة، يبقى (مستحيل) تكون اتقبلت في الشغل (can't have got).</div>" },
-    { q: "55. Ola ........ be absent. I have just seen her.", options: ["might", "must", "couldn't", "can't"], answer: 3, rule: "Present Deduction (Negative)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> I just saw her, so it's impossible she is absent right now ('can't').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> لسه شايفها، يبقى (مستحيل) تكون غايبة النهاردة (can't).</div>" },
-    { q: "56. She ........ have known about the bad news. She seemed very sad.", options: ["couldn't", "must", "can't", "hasn't"], answer: 1, rule: "Past Deduction (Sure)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> She was sad, so we are sure she knew the news ('must have').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> كانت حزينة، يبقى (أكيد) عرفت الأخبار السيئة (must).</div>" },
-    { q: "57. He ........ have died of cancer, but we have no evidence.", options: ["must", "can't", "may", "needn't"], answer: 2, rule: "Past Deduction (Unsure)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> 'no evidence' means it's only a possibility ('may have died').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> مفيش دليل، يبقى ده مجرد (احتمال) فنستخدم (may).</div>" },
-    { q: "58. He ........ be Arabian as he asks for an English guidebook.", options: ["must", "can't", "might", "shouldn't"], answer: 1, rule: "Present Deduction (Negative)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> Asking for an English guidebook suggests it is impossible he is an Arab ('can't').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> بيطلب دليل بالإنجليزي، يبقى (مستحيل) يكون عربي (can't).</div>" },
-    { q: "59. He is celebrating, he ........ the job.", options: ["must get", "should get", "can't have got", "must have got"], answer: 3, rule: "Past Deduction (Sure)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> Celebrating now proves he definitely got the job in the past ('must have got').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> بيحتفل دلوقتي، يبقى (أكيد) أخد الشغلانة (must have got).</div>" },
-    { q: "60. I traveled by train, but I ........ by car.", options: ["might have traveled", "could have traveled", "could travel", "can travel"], answer: 1, rule: "Unfulfilled Past Ability", exp: "<div class='exp-en'>💡 <b>Explanation:</b> 'could have traveled' means I had the ability/choice to do it but chose not to.</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> (كان يقدر بس معملش).. كان يقدر يسافر بالعربية بس اختار القطر (could have traveled).</div>" }
+    { q: "1. The light in his study room is still on. He ........ working on his project.", options: ["can't be", "might have", "must be", "was"], answer: 2, rule: "Present Deduction (Sure)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> We are sure he is working now because the light is on, so we use 'must be'.</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> النور شغال يبقى (أكيد) هو بيذاكر، استنتاج مؤكد في المضارع (must be).</div>", zatona: "النور شغال يبقى (أكيد) هو بيذاكر دلوقتي (must be)." },
+    { q: "2. You have just had a huge lunch! You ........ hungry now.", options: ["must be", "might be", "must have been", "can't be"], answer: 3, rule: "Present Deduction (Negative)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> Since you just ate a lot, it is impossible that you are hungry now. We use 'can't be'.</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> لسه واكل كتير يبقى (مستحيل) تكون جعان، استنتاج منفي في المضارع (can't be).</div>", zatona: "لسه واكل كتير يبقى (مستحيل) تكون جعان دلوقتي (can't be)." },
+    { q: "3. I ........ my umbrella on the bus, but I can't remember exactly.", options: ["forgot", "might have forgotten", "must have forgotten", "can't have forgotten"], answer: 1, rule: "Past Deduction (Unsure)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> 'can't remember exactly' shows uncertainty in the past, so we use 'might have + P.P'.</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> مش فاكر بالظبط، يبقى ده (احتمال) في الماضي فنستخدم (might have forgotten).</div>", zatona: "مش فاكر بالظبط، يبقى (احتمال) ضاعت زمان (might have + PP)." },
+    { q: "4. Sarah ........ at the party last night because she was in London.", options: ["can't have been", "might not be", "must have been", "may have been"], answer: 0, rule: "Past Deduction (Negative)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> She was in London, so it's impossible she was at the party. We use 'can't have + P.P'.</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> كانت في لندن، يبقى (مستحيل) تكون في الحفلة، استنتاج منفي في الماضي (can't have been).</div>", zatona: "كانت مسافرة، يبقى (مستحيل) تكون حضرت الحفلة زمان (can't have been)." },
+    { q: "5. Your mother ........ a great cook. You always hurry home to eat!", options: ["isn't", "may not be", "must be", "can't be"], answer: 2, rule: "Present Deduction (Sure)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> You hurry home to eat, so we are sure she is a great cook ('must be').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> بترجع جري عشان تاكل، يبقى مامتك (أكيد) طباخة ماهرة (must be).</div>", zatona: "بترجع جري عشان أكلها، يبقى (أكيد) هي طباخة ماهرة (must be)." },
+    { q: "6. This ........ Ola's phone. Hers is black, not silver.", options: ["must be", "can't be", "may have been", "must have been"], answer: 1, rule: "Present Deduction (Negative)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> The phone colors don't match, so it's impossible this is hers ('can't be').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> الألوان مش متطابقة، يبقى (مستحيل) يكون تليفونها (can't be).</div>", zatona: "تليفونها لونه مختلف، يبقى ده (مستحيل) يكون بتاعها (can't be)." },
+    { q: "7. The lights are all off and the car isn't in the driveway. Omar ........ out.", options: ["can't go", "can't have gone", "must go", "must have gone"], answer: 3, rule: "Past Deduction (Sure)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> The evidence shows he is not there, so we are sure he left in the past ('must have gone').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> مفيش نور ولا عربية، يبقى (أكيد) هو خرج، استنتاج مؤكد في الماضي (must have gone).</div>", zatona: "مفيش نور ولا عربية، يبقى (أكيد) خرج زمان (must have gone)." },
+    { q: "8. Malak ........ the milk—she was out all day.", options: ["can't have drunk", "must drink", "must have drunk", "can't drink"], answer: 0, rule: "Past Deduction (Negative)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> She wasn't home, so it's impossible she drank it ('can't have drunk').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> كانت برة طول اليوم، يبقى (مستحيل) تكون هي اللي شربته (can't have drunk).</div>", zatona: "كانت برة البيت، يبقى (مستحيل) تكون شربته زمان (can't have drunk)." },
+    { q: "9. Ahmed ........ his keys. He has been looking for them for an hour.", options: ["might lose", "can't have lost", "must have lost", "can't lose"], answer: 2, rule: "Past Deduction (Sure)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> He is looking for them, so we are sure he lost them ('must have lost').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> بيدور عليهم، يبقى (أكيد) ضيعهم، استنتاج مؤكد في الماضي (must have lost).</div>", zatona: "بيدور عليهم، يبقى (أكيد) ضاعوا منه زمان (must have lost)." },
+    { q: "10. Ali was here a second ago. He ........ far.", options: ["must be", "should have gone", "must have gone", "can't have gone"], answer: 3, rule: "Past Deduction (Negative)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> He just left, so it's impossible he traveled far ('can't have gone').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> لسه كان هنا من ثانية، يبقى (مستحيل) يكون بعد، استنتاج منفي في الماضي (can't have gone).</div>", zatona: "لسه كان هنا، يبقى (مستحيل) يكون مشي بعيد (can't have gone)." },
+    { q: "11. I'm not sure where my phone is. I ........ it at the office.", options: ["must leave", "may have left", "can't have left", "couldn't have left"], answer: 1, rule: "Past Deduction (Unsure)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> 'not sure' indicates a possibility in the past ('may have left').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> مش متأكد، يبقى (احتمال) أكون سيبته، نستخدم (may have left).</div>", zatona: "مش متأكد، يبقى (احتمال) سيبته زمان (may have left)." },
+    { q: "12. He spoke to me in perfect French. He ........ in France for a long time.", options: ["must have lived", "should have lived", "must live", "may live"], answer: 0, rule: "Past Deduction (Sure)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> His perfect French makes us sure he lived there ('must have lived').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> بيتكلم فرنساوي ممتاز، يبقى (أكيد) عاش هناك زمان (must have lived).</div>", zatona: "فرنساوي بتاعه بيرفكت، يبقى (أكيد) عاش هناك زمان (must have lived)." },
+    { q: "13. She looks very sad. She ........ some bad news.", options: ["can't hear", "might not hear", "can't have heard", "must have heard"], answer: 3, rule: "Past Deduction (Sure)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> She is sad now because of something that definitely happened ('must have heard').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> شكلها حزين، يبقى (أكيد) سمعت خبر وحش (must have heard).</div>", zatona: "زعلانة جداً، يبقى (أكيد) سمعت خبر وحش زمان (must have heard)." },
+    { q: "14. That woman ........ be his mother; she looks too young!", options: ["might", "can't", "must", "shouldn't"], answer: 1, rule: "Present Deduction (Negative)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> She looks young, so it's impossible she is his mother ('can't').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> شكلها صغير جداً، يبقى (مستحيل) تكون أمه (can't).</div>", zatona: "شكلها صغير، يبقى (مستحيل) تكون أمه دلوقتي (can't)." },
+    { q: "15. He ........ very fast when the accident happened; the car is completely destroyed.", options: ["can't have driven", "must be driving", "must have been driving", "didn't drive"], answer: 2, rule: "Past Deduction (Continuous)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> The destruction means we are sure he was driving fast at that moment in the past ('must have been driving').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> العربية متدمرة، يبقى (أكيد) كان بيسوق بسرعة وقت الحادثة (must have been driving).</div>", zatona: "العربية متدمرة، يبقى (أكيد) كان مستمر في السرعة وقت الحادثة (must have been + ing)." },
+    { q: "16. I ........ the exam, but I wasted the time.", options: ["could have passed", "must have passed", "shouldn't have passed", "can't have passed"], answer: 0, rule: "Unfulfilled Past Ability", exp: "<div class='exp-en'>💡 <b>Explanation:</b> 'could have + P.P' is used for an ability in the past that wasn't used.</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> كان عندي القدرة أنجح بس ضيعت الوقت، نستخدم (could have passed).</div>", zatona: "كان عندي القدرة زمان بس معملتش كده (could have passed)." },
+    { q: "17. Mr. Osama ........ near here because he always walks to work.", options: ["must have lived", "may have lived", "can't live", "must live"], answer: 3, rule: "Present Deduction (Sure)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> He walks to work, so we are sure he currently lives nearby ('must live').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> بيمشي للشغل كل يوم، يبقى (أكيد) هو عايش قريب دلوقتي (must live).</div>", zatona: "بيمشي للشغل، يبقى (أكيد) عايش قريب دلوقتي (must live)." },
+    { q: "18. I'm not sure when Lamia will come. She ........ at any time.", options: ["must arrive", "could arrive", "may have arrived", "can't arrive"], answer: 1, rule: "Future Possibility", exp: "<div class='exp-en'>💡 <b>Explanation:</b> 'not sure' for a future event uses 'could' or 'might' + base verb.</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> مش متأكد من موعد وصولها في المستقبل، فنستخدم (could arrive).</div>", zatona: "احتمال في المستقبل مفيش تأكيد (could / might + base)." },
+    { q: "19. You ........ the door. It was open when I got home.", options: ["might have locked", "must have locked", "can't have locked", "can't lock"], answer: 2, rule: "Past Deduction (Negative)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> It was open, so it's impossible you locked it ('can't have locked').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> الباب كان مفتوح، يبقى (مستحيل) تكون قفلته (can't have locked).</div>", zatona: "كان مفتوح، يبقى (مستحيل) تكون قفلته زمان (can't have locked)." },
+    { q: "20. Kamal ........ by train yesterday. Who knows?", options: ["might have traveled", "must have traveled", "shouldn't have traveled", "can't have traveled"], answer: 0, rule: "Past Deduction (Unsure)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> 'Who knows?' implies uncertainty, so we use 'might have + P.P'.</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> عبارة (مين عارف؟) بتدل على الاحتمال في الماضي، نختار (might have traveled).</div>", zatona: "مين عارف؟ يعني (احتمال) يكون سافر كده زمان (might have + PP)." },
+    { q: "21. Since you have been working for hours, you ........ tired now.", options: ["might have been", "must have been", "can't be", "must be"], answer: 3, rule: "Present Deduction (Sure)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> You worked for hours, so we are sure you are tired right now ('must be').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> شغال بقالك ساعات، يبقى (أكيد) إنت تعبان دلوقتي (must be).</div>", zatona: "تعبان من الشغل، يبقى (أكيد) إنت مرهق دلوقتي (must be)." },
+    { q: "22. Winning the first prize last year ........ Ali very happy.", options: ["will have made", "must have made", "can't make", "mustn't make"], answer: 1, rule: "Past Deduction (Sure)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> It's logical and certain that winning made him happy in the past ('must have made').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> الفوز بالجايزة (أكيد) خلاه مبسوط زمان (must have made).</div>", zatona: "كسب الجايزة، يبقى (أكيد) كان مبسوط زمان (must have made)." },
+    { q: "23. It's strange that he hasn't phoned. He ........ lost his phone.", options: ["might have", "must have been", "can't have", "should have"], answer: 0, rule: "Past Deduction (Unsure)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> We don't know why he didn't phone, so it's a possibility ('might have lost').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> متصلش ليه؟ (احتمال) يكون ضيع تليفونه (might have).</div>", zatona: "مفيش سبب واضح لعدم اتصاله، فده (احتمال) في الماضي (might have)." },
+    { q: "24. Why did you run across the road? You ........ injured.", options: ["must have", "can't have", "could have been", "should have"], answer: 2, rule: "Unfulfilled Past Possibility", exp: "<div class='exp-en'>💡 <b>Explanation:</b> 'could have been' shows something that was possible but didn't happen (a danger avoided).</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> بتجري في الشارع ليه؟ إنت (كان ممكن) تتصاب بس محصلش (could have been).</div>", zatona: "كان ممكن يحصلك حاجة وحشة بس ربنا ستر (could have been)." },
+    { q: "25. The streets are very wet this morning. It ........ heavily during the night.", options: ["must rain", "must have rained", "can't have rained", "should have rained"], answer: 1, rule: "Past Deduction (Sure)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> The wet streets are strong evidence that it definitely rained ('must have rained').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> الشوارع غرقانة مية، يبقى (أكيد) مطرت جامد بالليل (must have rained).</div>", zatona: "الأرض مبلولة، يبقى (أكيد) مطرت زمان (must have rained)." },
+    { q: "26. They ........ the match; they are celebrating in the streets!", options: ["must win", "must have won", "can't have won", "can't win"], answer: 1, rule: "Past Deduction (Sure)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> Celebrating is proof that they definitely won the match ('must have won').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> بيحتفلوا في الشارع، يبقى (أكيد) كسبوا الماتش (must have won).</div>", zatona: "بيحتفلوا، يبقى (أكيد) كسبوا الماتش زمان (must have won)." },
+    { q: "27. The car is still in the garage, so they ........ left yet.", options: ["must have", "might have", "must have been", "can't have"], answer: 3, rule: "Past Deduction (Negative)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> The car is here, so it is impossible they have left ('can't have left').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> العربية موجودة، يبقى (مستحيل) يكونوا مشيوا (can't have).</div>", zatona: "العربية موجودة، يبقى (مستحيل) يكونوا مشيوا زمان (can't have)." },
+    { q: "28. I can't find my keys. They ........ in the library.", options: ["must have been left", "must have left", "had to be left", "should have left"], answer: 0, rule: "Past Deduction (Passive)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> The keys are the subject, so we need the passive form ('must have been left').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> المفاتيح (تُترك) مبني للمجهول، إذن (أكيد اتسابوا) في المكتبة (must have been left).</div>", zatona: "المفاتيح (اتسابت) مبني للمجهول في الماضي الأكيد (must have been + PP)." },
+    { q: "29. My uncle received the order yesterday. It ........ to the wrong address.", options: ["could have sent", "must have been sent", "can't have been sent", "can't have sent"], answer: 2, rule: "Past Deduction (Negative Passive)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> Since he received it, it's impossible it was sent to the wrong address ('can't have been sent').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> طالما استلم الأوردر، يبقى (مستحيل) يكون اتبعت لعنوان غلط (can't have been sent).</div>", zatona: "استلمه خلاص، يبقى (مستحيل) يكون اتبعت غلط (can't have been + PP)." },
+    { q: "30. I ........ the vase! I was in a completely different room when it broke.", options: ["could have broken", "must have broken", "mustn't have broken", "can't have broken"], answer: 3, rule: "Past Deduction (Negative)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> I was not in the room, so it's impossible I broke it ('can't have broken').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> كنت في أوضة تانية، يبقى (مستحيل) أكون أنا اللي كسرته (can't have broken).</div>", zatona: "مكنتش موجود، يبقى (مستحيل) أكون كسرته زمان (can't have broken)." },
+    { q: "31. The team ........ the championship if their star player hadn't been injured in the final minutes.", options: ["could have won", "can't have won", "couldn't have won", "must have won"], answer: 0, rule: "Unfulfilled Past Possibility", exp: "<div class='exp-en'>💡 <b>Explanation:</b> It was possible for them to win if he wasn't injured ('could have won').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> (كان ممكن) يكسبوا لو اللاعب متصابش، التعبير عن قدرة لم تتحقق (could have won).</div>", zatona: "كان في فرصة يكسبوا لو متصابش (could have won)." },
+    { q: "32. \"I can't find my keys anywhere.\" - \"Check the car; you ........ them in the ignition.\"", options: ["couldn't have left", "can't have left", "could have left", "must leave"], answer: 2, rule: "Past Deduction (Unsure)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> Suggesting a possibility of what happened ('could have left').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> اقتراح مبني على احتمال، (ممكن) تكون سيبتهم في العربية (could have left).</div>", zatona: "مجرد احتمال، (ممكن) تكون نسيتهم هناك زمان (could have + PP)." },
+    { q: "33. It ........ better! The weather was perfect, the food was delicious, and everyone had a great time.", options: ["could have gone", "couldn't have gone", "can't have gone", "must go"], answer: 1, rule: "Idiomatic Deduction", exp: "<div class='exp-en'>💡 <b>Explanation:</b> 'couldn't have gone better' means it was absolutely perfect.</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> تعبير معناه (مكنش ممكن الأمور تمشي أحسن من كده) لأن كل حاجة كانت مثالية (couldn't have gone).</div>", zatona: "تعبير محفوظ معناه: كان بيرفكت ومكنش ممكن يكون أحسن (couldn't have gone)." },
+    { q: "34. Sarah ........ the news yet; she's been on a flight without Wi-Fi for the last ten hours.", options: ["could have heard", "couldn't have heard", "can't have heard", "both b and c"], answer: 3, rule: "Past Deduction (Negative)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> Both 'couldn't have' and 'can't have' express that it is impossible she heard the news.</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> مفيش نت في الطيارة، يبقى (مستحيل) تكون سمعت الأخبار، والاتنين صح.</div>", zatona: "الاتنين بيعبروا عن استحالة حدوث الشيء في الماضي (can't have / couldn't have)." },
+    { q: "35. Which sentence is correctly structured?", options: ["He wasn't at school yesterday. He must be ill.", "He wasn't at school yesterday. He must have been ill.", "He wasn't at school yesterday. He can't be ill.", "He wasn't at school yesterday. He had to be ill."], answer: 1, rule: "Past Deduction Match", exp: "<div class='exp-en'>💡 <b>Explanation:</b> The first sentence is in the past, so the deduction must also refer to the past ('must have been').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> الجملة الأولى ماضي (wasn't)، يبقى الاستنتاج لازم يكون ماضي (must have been).</div>", zatona: "الدليل في الماضي (wasn't)، يبقى الاستنتاج لازم يكون في الماضي (must have been)." },
+    { q: "36. \"He looks very tired. He must have slept well last night.\" Which of the following corrects the mistake in this sentence?", options: ["slept -> sleep", "must -> can't", "looks -> looked", "last night -> tonight"], answer: 1, rule: "Correction (Logic)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> If he is tired, it is impossible he slept well. 'must' changes to 'can't'.</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> المعنى غلط، شكله تعبان يبقى (مستحيل) يكون نام كويس، نصحح must لـ can't.</div>", zatona: "شكله تعبان، يبقى (مستحيل) يكون نام كويس. نعكس must لـ can't." },
+    { q: "37. \"She got the highest mark in the test. She might have studied very hard.\" Which of the following corrects the mistake in this sentence?", options: ["might -> must", "got -> gets", "studied -> study", "highest -> higher"], answer: 0, rule: "Correction (Logic)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> Getting the highest mark is strong evidence, making us sure she studied hard. 'might' -> 'must'.</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> جابت أعلى درجة يبقى (أكيد) ذاكرت، مش احتمال. فنصحح might لـ must.</div>", zatona: "أعلى درجة يبقى ده مش احتمال، ده (تأكيد). نعكس might لـ must." },
+    { q: "38. \"Hany went to school on foot. He must have gone by car.\" Which of the following corrects the mistake in this sentence?", options: ["must have gone -> went", "school -> the school", "went -> should go", "must -> can't"], answer: 3, rule: "Correction (Logic)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> He walked, so it's impossible he took a car. 'must' -> 'can't'.</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> هو راح ماشي، يبقى (مستحيل) يكون راح بالعربية. نصحح must لـ can't.</div>", zatona: "راح ماشي، يبقى (مستحيل) راح بالعربية. نعكس must لـ can't." },
+    { q: "39. Which sentence is correctly structured to express deduction?", options: ["You must finish your homework before dinner.", "She mustn't visit her grandmother tomorrow.", "He must be very tired after working all day.", "You should see a doctor if you feel sick."], answer: 2, rule: "Deduction vs Obligation", exp: "<div class='exp-en'>💡 <b>Explanation:</b> Option C is the only sentence making a logical guess (deduction) based on evidence. The others are advice/obligation.</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> الجملة C هي الوحيدة اللي بتعبر عن استنتاج (أكيد تعبان بعد الشغل)، الباقي نصيحة أو إلزام.</div>", zatona: "الجملة الوحيدة اللي بتستنتج حاجة مبنية على دليل هي (He must be very tired)." },
+    { q: "40. Which sentence is correctly structured?", options: ["He is a brilliant surgeon. He ought to have been a clever student.", "He is a brilliant surgeon. He must have been a clever student.", "He is a brilliant surgeon. He can't have been a clever student.", "He is a brilliant surgeon. He must be a clever student."], answer: 1, rule: "Past Deduction based on Present Evidence", exp: "<div class='exp-en'>💡 <b>Explanation:</b> Being a brilliant surgeon now means we are sure he was a clever student in the past ('must have been').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> هو جراح شاطر دلوقتي، يبقى (أكيد) كان طالب ذكي زمان (must have been).</div>", zatona: "جراح عظيم دلوقتي، يبقى (أكيد) كان طالب ذكي زمان (must have been)." },
+    { q: "41. She ........ at home; her lights are off.", options: ["mustn't have been", "must have been", "must be", "can't be"], answer: 3, rule: "Present Deduction (Negative)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> The lights are off now, so it is impossible she is home ('can't be').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> النور مطفي، يبقى (مستحيل) تكون في البيت دلوقتي (can't be).</div>", zatona: "النور مطفي، يبقى (مستحيل) تكون جوه دلوقتي (can't be)." },
+    { q: "42. They ........ tired after walking all day in the heat.", options: ["can't be", "must be", "aren't", "can't have been"], answer: 1, rule: "Present Deduction (Sure)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> Walking all day guarantees they are tired now ('must be').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> مشيوا طول اليوم في الحر، يبقى (أكيد) هما تعبانين (must be).</div>", zatona: "مشيوا كتير، يبقى (أكيد) مرهقين دلوقتي (must be)." },
+    { q: "43. This ........ the right place; the map shows we're still far away.", options: ["must be", "must have been", "can't be", "could have been"], answer: 2, rule: "Present Deduction (Negative)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> The map shows we are far, so it's impossible this is the right place ('can't be').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> الخريطة بتقول إننا لسه بعيد، يبقى (مستحيل) ده يكون المكان الصح (can't be).</div>", zatona: "الخريطة مبينة إننا بعيد، يبقى ده (مستحيل) يكون المكان (can't be)." },
+    { q: "44. The streets are flooded. There ........ a heavy storm last night.", options: ["must have been", "must be", "can't be", "can't have been"], answer: 0, rule: "Past Deduction (Sure)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> The flooded streets make us sure there was a storm ('must have been').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> الشوارع غرقانة، يبقى (أكيد) كان في عاصفة امبارح (must have been).</div>", zatona: "الشارع غرقان، يبقى (أكيد) كان فيه مطر زمان (must have been)." },
+    { q: "45. They ........ the announcement—they didn't show up.", options: ["must have heard", "can't have heard", "could have heard", "could hear"], answer: 1, rule: "Past Deduction (Negative)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> They didn't show up, so it is impossible they heard it ('can't have heard').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> مجوش، يبقى (مستحيل) يكونوا سمعوا الإعلان (can't have heard).</div>", zatona: "محدش فيهم جه، يبقى (مستحيل) يكونوا سمعوا النداء زمان (can't have heard)." },
+    { q: "46. She ........ about the meeting yesterday. It's likely.", options: ["can't have forgotten", "must have forgotten", "forget", "might have forgotten"], answer: 3, rule: "Past Deduction (Unsure)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> 'It's likely' indicates a strong possibility, but not absolute certainty ('might have forgotten').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> كلمة likely بتعبر عن (احتمال كبير) فنستخدم (might have forgotten).</div>", zatona: "كلمة likely = احتمال. إذن نستخدم (might have + PP)." },
+    { q: "47. Many people in poor regions ........ climate change, but they suffer the most.", options: ["can't have caused", "must have caused", "must cause", "should have caused"], answer: 0, rule: "Past Deduction (Negative)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> It is logically impossible that poor regions caused global climate change ('can't have caused').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> (مستحيل) يكونوا هما اللي سببوا التغير المناخي لأنهم فقراء (can't have caused).</div>", zatona: "مناطق فقيرة، يبقى (مستحيل) هما اللي عملوا التلوث ده كله (can't have + PP)." },
+    { q: "48. That community ........ serious flooding after last week's hurricane.", options: ["can't have experienced", "must experience", "couldn't have experienced", "must have experienced"], answer: 3, rule: "Past Deduction (Sure)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> A hurricane definitely causes flooding, so we are sure they experienced it ('must have experienced').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> بعد الإعصار، (أكيد) المنطقة دي اتعرضت لفيضان (must have experienced).</div>", zatona: "إعصار حصل، يبقى (أكيد) اتعرضوا لفيضانات (must have + PP)." },
+    { q: "49. I'm sure this data ........ that sea level is rising.", options: ["may prove", "must be proven", "must prove", "must have proven"], answer: 2, rule: "Present Deduction (Sure)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> 'I'm sure' + present fact means we use 'must' + base verb.</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> أنا متأكد إن البيانات دي (بتثبت) كذا في المضارع (must prove).</div>", zatona: "متأكد إن ده بيحصل دلوقتي يبقى استنتاج مؤكد في المضارع (must + inf)." },
+    { q: "50. Activists ........ frustrated when leaders ignore their demands.", options: ["must feel", "can't feel", "don't feel", "must have felt"], answer: 0, rule: "Present Deduction (Sure)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> It's a logical certainty that they feel frustrated ('must feel').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> (أكيد) بيحسوا بالإحباط لما محدش بيسمعهم (must feel).</div>", zatona: "طلباتهم بتترفض، يبقى (أكيد) بيحسوا بالإحباط دلوقتي (must feel)." },
+    { q: "51. No survivors have been recorded in the avalanche catastrophe. All the climbers ........ buried under thick layers of ice.", options: ["must have", "can't have", "can't have been", "must have been"], answer: 3, rule: "Past Deduction (Sure - Passive)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> No survivors means we are sure they were buried. It's passive ('must have been').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> مفيش ناجين، يبقى المتسلقين (أكيد اندفنوا) تحت التلج (مبني للمجهول).</div>", zatona: "مفيش ناجين، يبقى (أكيد تم دفنهم) مجهول في الماضي (must have been + PP)." },
+    { q: "52. The lights are off and the door is locked; the office ........ for the day.", options: ["should be closing", "must be closed", "must close", "should close"], answer: 1, rule: "Present Deduction (Sure - State)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> The visual evidence proves the state of the office is closed ('must be closed').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> الباب مقفول والنور مطفي، يبقى (أكيد) المكتب مغلق (must be closed).</div>", zatona: "الباب مقفول والنور مطفي، يبقى ده (أكيد مغلق) كصفة (must be closed)." },
+    { q: "53. The flowers are dead. He ........ them.", options: ["must have watered", "had to water", "can't have watered", "shouldn't have watered"], answer: 2, rule: "Past Deduction (Negative)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> They are dead, so it is impossible he watered them ('can't have watered').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> الورد مات، يبقى (مستحيل) يكون سقاه (can't have watered).</div>", zatona: "الورد ميت، يبقى (مستحيل) يكون شرب مية زمان (can't have + PP)." },
+    { q: "54. She looks unhappy. She ........ the job.", options: ["can't have got", "must have got", "may have got", "shouldn't have got"], answer: 0, rule: "Past Deduction (Negative)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> Unhappy appearance means it's impossible she got the job ('can't have got').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> زعلانة، يبقى (مستحيل) تكون اتقبلت في الشغل (can't have got).</div>", zatona: "زعلانة جداً، يبقى (مستحيل) تكون اتقبلت في الوظيفة (can't have + PP)." },
+    { q: "55. Ola ........ be absent. I have just seen her.", options: ["might", "must", "couldn't", "can't"], answer: 3, rule: "Present Deduction (Negative)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> I just saw her, so it's impossible she is absent right now ('can't').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> لسه شايفها، يبقى (مستحيل) تكون غايبة النهاردة (can't).</div>", zatona: "لسه شايفها بعيني، يبقى (مستحيل) تكون غايبة دلوقتي (can't be)." },
+    { q: "56. She ........ have known about the bad news. She seemed very sad.", options: ["couldn't", "must", "can't", "hasn't"], answer: 1, rule: "Past Deduction (Sure)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> She was sad, so we are sure she knew the news ('must have').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> كانت حزينة، يبقى (أكيد) عرفت الأخبار السيئة (must).</div>", zatona: "كانت حزينة، يبقى (أكيد) عرفت الخبر الوحش زمان (must have)." },
+    { q: "57. He ........ have died of cancer, but we have no evidence.", options: ["must", "can't", "may", "needn't"], answer: 2, rule: "Past Deduction (Unsure)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> 'no evidence' means it's only a possibility ('may have died').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> مفيش دليل، يبقى ده مجرد (احتمال) فنستخدم (may).</div>", zatona: "مفيش دليل قاطع، يبقى ده (مجرد احتمال) نستخدم (may)." },
+    { q: "58. He ........ be Arabian as he asks for an English guidebook.", options: ["must", "can't", "might", "shouldn't"], answer: 1, rule: "Present Deduction (Negative)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> Asking for an English guidebook suggests it is impossible he is an Arab ('can't').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> بيطلب دليل بالإنجليزي، يبقى (مستحيل) يكون عربي (can't).</div>", zatona: "بيطلب كتاب إنجليزي، يبقى (مستحيل) يكون عربي (can't be)." },
+    { q: "59. He is celebrating, he ........ the job.", options: ["must get", "should get", "can't have got", "must have got"], answer: 3, rule: "Past Deduction (Sure)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> Celebrating now proves he definitely got the job in the past ('must have got').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> بيحتفل دلوقتي، يبقى (أكيد) أخد الشغلانة (must have got).</div>", zatona: "بيحتفل، يبقى (أكيد) اتقبل في الشغلانة زمان (must have + PP)." },
+    { q: "60. I traveled by train, but I ........ by car.", options: ["might have traveled", "could have traveled", "could travel", "can travel"], answer: 1, rule: "Unfulfilled Past Ability", exp: "<div class='exp-en'>💡 <b>Explanation:</b> 'could have traveled' means I had the ability/choice to do it but chose not to.</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> (كان يقدر بس معملش).. كان يقدر يسافر بالعربية بس اختار القطر (could have traveled).</div>", zatona: "كان عندي القدرة أسافر بالعربية بس اخترت القطر بمزاجي (could have + PP)." }
 ];
 
 let timeAttackLevel = 0;
@@ -596,7 +670,23 @@ function initQuizData() {
     quizData = tempArray.map((item, index) => {
         let correctText = item.options[item.answer];
         shuffleArray(item.options); 
-        return { rule: item.rule || "Grammar Rule", originalQ: item.q, q: `${index + 1}. ` + item.q.replace(/^\d+\.\s*/, ''), options: item.options, answer: item.options.indexOf(correctText), exp: item.exp };
+        
+        let customExp = `<div class='exp-en'>💡 <b>Explanation:</b> ${item.rule}</div>`;
+        if(item.zatona) {
+            customExp += `<div class='exp-separator'></div><div class='exp-ar'>✨ <b>الزتونة:</b> ${item.zatona}</div>`;
+        } else {
+            customExp = item.exp;
+        }
+
+        return { 
+            rule: item.rule || "Grammar Rule", 
+            originalQ: item.q, 
+            q: `${index + 1}. ` + item.q.replace(/^\d+\.\s*/, ''), 
+            options: item.options, 
+            answer: item.options.indexOf(correctText), 
+            exp: customExp,
+            zatona: item.zatona || item.rule
+        };
     });
 }
 
@@ -724,6 +814,9 @@ function calculateScore() {
         window.scroll({ top: 0, left: 0 });
 
         let score = 0; const reviewList = document.getElementById("review-list"); if(reviewList) reviewList.innerHTML = "";
+        let printQList = document.getElementById("print-q-list"); if(printQList) printQList.innerHTML = "";
+        let omrGrid = document.getElementById("omr-grid"); if(omrGrid) omrGrid.innerHTML = "";
+
         let wrongAnswersHTML = ""; let ruleMistakes = {};
 
         quizData.forEach((item, index) => {
@@ -739,17 +832,39 @@ function calculateScore() {
                 wrongAnswersHTML += `<div style="margin-bottom: 20px; padding-bottom: 20px; border-bottom: 2px solid #e2e8f0;"><div style="direction: ltr; text-align: left; font-weight: bold; color: #000080; margin-bottom: 8px; font-size: 16px;">Q: ${item.originalQ}</div><div style="direction: ltr; text-align: left; color: #E11D48; font-size: 15px; margin-bottom: 4px;">❌ <b>Student's Answer:</b> ${emailUserOptText}</div><div style="direction: ltr; text-align: left; color: #059669; font-size: 15px; margin-bottom: 10px;">✅ <b>Correct Answer:</b> ${correctOpt}</div><div style="background: rgba(0,0,0,0.04); padding: 12px; border-radius: 6px; border-left: 4px solid #0EA5E9;">${emailExplanation}</div><div style="margin-top: 8px; color: #666; font-size: 13px; direction: rtl;">📌 القاعدة المفقودة: ${item.rule}</div></div>`;
             }
 
-            // Options generation for Print Blank Mode
+            // ================= PRINT MASTER ENGINE DATA INJECTION =================
+            
+            // 1. Generate Question HTML for Print Wrapper
             let printOptionsHTML = '<div class="print-options-grid">';
             item.options.forEach((opt, idx) => {
-                printOptionsHTML += `<div>${String.fromCharCode(65 + idx)}) ${opt}</div>`;
+                let isCorrectOptClass = (idx === item.answer) ? 'is-correct-opt' : '';
+                printOptionsHTML += `<div class="print-opt-item ${isCorrectOptClass}"><div class="print-opt-letter">${String.fromCharCode(65 + idx)}</div><span class="print-opt-text">${opt}</span></div>`;
             });
             printOptionsHTML += '</div>';
+
+            let printItemHTML = `
+                <div class="print-q-item ${isCorrect ? 'ans-correct' : 'ans-wrong'}">
+                    <div class="print-q-text">${item.q}</div>
+                    ${printOptionsHTML}
+                    <div class="print-rule-box">💡 الزتونة: ${item.zatona}</div>
+                </div>
+            `;
+            if(printQList) printQList.innerHTML += printItemHTML;
+
+            // 2. Generate OMR Bubble Sheet Row
+            let omrRowHTML = `<div class="omr-row"><div class="omr-q-num">${index + 1}.</div><div class="omr-bubbles">`;
+            for(let b=0; b<4; b++){
+                let isCorrectBubble = (b === item.answer) ? 'is-correct-bubble' : '';
+                omrRowHTML += `<div class="omr-bubble ${isCorrectBubble}">${String.fromCharCode(65 + b)}</div>`;
+            }
+            omrRowHTML += `</div></div>`;
+            if(omrGrid) omrGrid.innerHTML += omrRowHTML;
+
+            // ================= END PRINT MASTER ENGINE =================
 
             const div = document.createElement("div");
             div.className = `review-item ${isCorrect ? 'is-correct' : 'is-wrong'}`;
             div.innerHTML = `<div style="font-weight:800;font-size:16px;margin-bottom:8px; direction: ltr; color: var(--text-main);">${item.q}</div>
-                ${printOptionsHTML}
                 <div class="ui-ans-box">
                     <div class="student-ans" style="direction: rtl; color: var(--text-muted);">إجابتك: <b style="color:${isCorrect?'var(--success-color)':'var(--error-color)'}; direction: ltr; display: inline-block;">${userOptText}</b></div>
                     ${!isCorrect ? `<div class="correct-ans" style="color:var(--success-color);font-weight:800;margin-top:4px; direction: rtl;">الإجابة الصحيحة: <span style="direction: ltr; display: inline-block;">${correctOpt}</span></div>` : ''}
@@ -768,7 +883,7 @@ function calculateScore() {
         document.body.className = "theme-1"; 
         
         document.getElementById("res-name").innerText = studentName;
-        document.getElementById("print-doc-score").innerText = `${score} / ${quizData.length} (${percent}%)`;
+        document.getElementById("print-doc-score").innerText = `${score} / ${quizData.length}`;
         document.getElementById("score-percentage").innerText = `${score} / ${quizData.length}`;
         document.getElementById("score-percent-text").innerText = `Accuracy: ${percent}%`;
         
