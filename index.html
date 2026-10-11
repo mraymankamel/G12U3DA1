@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <!-- Theme Name: Platinum Crystal (Titanium V.Max - Print Master Engine V.MAX Edition) - BUG FIXED -->
+    <!-- Theme Name: Platinum Crystal (Titanium V.Max - Print Master V.MAX) - BUG FIXED -->
     <title>🌟 التحدي الأكبر 🚀</title>
 
     <meta property="og:title" content="🌟 التحدي الأكبر 🚀">
@@ -81,12 +81,10 @@
         .welcome-card { background: #FFFFFF; border-radius: 20px; padding: 45px 25px; margin-bottom: 30px; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 10px 30px rgba(0,0,0,0.02); }
         .welcome-card h3 { font-size: 26px; font-weight: 900; color: var(--accent); margin-bottom: 20px;}
         
-        /* Time Attack Grid (Column) */
         .ta-grid { display: flex; flex-direction: column; gap: 12px; margin-bottom: 30px; }
         .ta-btn { background: #FFFFFF; color: var(--text-muted); border: 2px solid #E2E8F0; padding: 16px; font-size: 16px; border-radius: 14px; font-weight: 800; font-family: 'Outfit', 'Cairo'; cursor: pointer; transition: 0.3s;}
         .ta-btn.active { background: var(--accent-glow); color: var(--accent); border-color: var(--accent); box-shadow: 0 5px 15px var(--accent-glow); transform: scale(1.02); }
 
-        /* Avatar Grid (Strict Single Row) */
         .avatar-grid { display: flex; justify-content: center; align-items: center; gap: 15px; margin-bottom: 35px; flex-wrap: nowrap; overflow-x: auto; padding-bottom: 5px;}
         .avatar-option { font-size: 34px; padding: 14px 20px; background: #FFFFFF; border-radius: 16px; cursor: pointer; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 4px 12px rgba(0,0,0,0.02); transition: 0.3s; flex-shrink: 0;}
         .avatar-option.selected { background: #F8FAFC; border-color: var(--accent); box-shadow: 0 10px 25px var(--accent-glow); transform: scale(1.1) translateY(-5px);}
@@ -117,7 +115,6 @@
         .option-item.selected .opt-letter { background: var(--accent); color: #FFFFFF; }
         .opt-text { font-family: 'Outfit'; font-weight: 600; font-size: 19px; }
 
-        /* Default Desktop Buttons: LTR Row-Reverse */
         .action-btns { display: flex; flex-direction: row-reverse; justify-content: space-between; gap: 20px; direction: ltr;}
         .btn { padding: 20px 30px; border-radius: 16px; font-weight: 900; font-size: 17px; border: 1px solid var(--accent); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-family: 'Outfit', 'Cairo'; text-transform: uppercase; transition: 0.3s; }
         .btn-outline { background: transparent; color: var(--accent); }
@@ -183,13 +180,11 @@
             
             #print-container { display: block !important; width: 100%; max-width: 210mm; margin: 0 auto; background: transparent; }
             
-            /* The Table Hack */
             table.print-table { width: 100%; border-collapse: collapse; }
             thead.print-thead { display: table-header-group; }
             tfoot.print-tfoot { display: table-footer-group; }
             tbody.print-tbody { display: table-row-group; }
             
-            /* Headers & Footers */
             .header-content { display: flex; align-items: center; gap: 15px; padding: 15mm 15mm 5mm; border-bottom: 2px solid #000; margin-bottom: 5mm; }
             .header-content img { width: 60px; height: 60px; border-radius: 50%; border: 2px solid #000; }
             .header-content div strong { font-family: 'Outfit'; font-size: 26px; font-weight: 900; display: block; color: #000; line-height: 1.2; }
@@ -198,22 +193,18 @@
             .footer-content { display: flex; justify-content: space-between; align-items: center; padding: 5mm 15mm 15mm; border-top: 2px solid #000; font-family: 'Outfit'; font-weight: bold; font-size: 14px; color: #000; }
             .page-number:after { counter-increment: page; content: "Page " counter(page); }
 
-            /* Watermark */
             .print-watermark { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0.08; z-index: 9999; pointer-events: none; -webkit-print-color-adjust: exact; print-color-adjust: exact; text-align: center; }
             .print-watermark img { width: 350px; height: 350px; border-radius: 50%; filter: grayscale(100%); margin-bottom: 20px;}
             .print-watermark h1 { font-family: 'Outfit'; font-size: 70px; font-weight: 900; color: #000; }
 
-            /* Title Block */
             .exam-title-box { text-align: center; margin-bottom: 10mm; padding: 0 15mm;}
             .exam-title-box h2 { font-family: 'Outfit'; font-size: 28px; font-weight: 900; color: #000; text-transform: uppercase; margin-bottom: 10px; }
             .student-info-row { display: flex; align-items: center; justify-content: center; gap: 20px; font-family: 'Outfit', 'Cairo'; font-size: 16px; font-weight: 700; width: 100%; }
             .info-field { display: flex; align-items: flex-end; flex: 1; }
             .info-label { margin-right: 10px; white-space: nowrap; }
             .info-line { border-bottom: 2px dotted #000; flex: 1; min-height: 20px; padding-bottom: 2px; text-align: center;}
-            /* 🔥 BUG FIX: Ensure student name prints properly in the dotted line */
             #print-doc-student { font-size: 18px; color: #000; }
 
-            /* Q Layout */
             .print-q-container { padding: 0 15mm; }
             .print-q-item { page-break-inside: avoid; margin-bottom: 25px; font-family: 'Outfit', 'Cairo'; }
             .print-q-text { font-size: 18px; font-weight: 800; color: #000; margin-bottom: 12px; direction: ltr; text-align: left; }
@@ -222,10 +213,12 @@
             .print-opt-letter { width: 28px; height: 28px; border-radius: 50%; border: 2px solid #000; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 14px;}
             .print-rule-box { display: none; }
 
-            /* 🖨️ MODE 1: Blank Exam (Default) */
-            /* Default CSS is already built for Blank Exam */
+            /* MODE 1: Blank Exam */
+            body.print-blank-mode .ui-ans-box, body.print-blank-mode .explanation-box { display: none !important; }
+            body.print-blank-mode .print-options-grid { display: grid !important; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 15px; font-family: 'Outfit'; font-size: 16px; font-weight: 600; }
+            body.print-blank-mode .review-item.is-correct, body.print-blank-mode .review-item.is-wrong { border-left: 1px solid #ccc !important; }
 
-            /* 📥 MODE 2: Smart Notes */
+            /* MODE 2: Smart Notes */
             body.print-notes-mode #print-title-out::after { content: " (Smart Revision Notes)"; font-size: 16px; color: #555; display: block; margin-top: 5px; text-transform: none;}
             body.print-notes-mode .print-q-item.ans-correct { display: none !important; }
             body.print-notes-mode .print-opt-item:not(.is-correct-opt) { display: none !important; }
@@ -234,12 +227,12 @@
             body.print-notes-mode .print-rule-box { display: block !important; background: #f8fafc !important; border: 1px dashed #64748b !important; padding: 12px !important; border-radius: 8px !important; margin-top: 12px !important; font-family: 'Cairo'; font-size: 15px; font-weight: 700; direction: rtl; text-align: right; -webkit-print-color-adjust: exact; print-color-adjust: exact;}
             body.print-notes-mode .omr-container { display: none !important; }
 
-            /* 👁️ TEACHER MODE (Live UI & Print) */
+            /* TEACHER MODE */
             body.teacher-mode-active .print-opt-item.is-correct-opt .print-opt-letter { background: #000 !important; color: #fff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
             body.teacher-mode-active .print-opt-item.is-correct-opt .print-opt-text { text-decoration: underline; font-weight: 900;}
             body.teacher-mode-active .print-rule-box { display: block !important; background: #f0f0f0 !important; border: 1px solid #000 !important; padding: 10px !important; border-radius: 8px !important; margin-top: 10px !important; font-family: 'Cairo'; font-size: 14px; font-weight: 700; direction: rtl; text-align: right; -webkit-print-color-adjust: exact; print-color-adjust: exact;}
 
-            /* 📑 OMR Styles */
+            /* OMR */
             .omr-container { display: none; page-break-before: always; padding: 10mm 15mm; font-family: 'Outfit'; }
             body.omr-active .omr-container { display: block !important; }
             .omr-title { text-align: center; font-size: 24px; font-weight: 900; margin-bottom: 20px; text-transform: uppercase; }
@@ -265,7 +258,6 @@
             .icon-btn { width: 40px; height: 40px; }
             .eye-care-controls { top: 12px; right: 12px; }
             
-            /* Fixed Avatar Row */
             .avatar-grid { gap: 10px; }
             .avatar-option { font-size: 26px; padding: 10px 14px; }
             
@@ -656,6 +648,8 @@ const rawData = [
     { q: "60. I traveled by train, but I ........ by car.", options: ["might have traveled", "could have traveled", "could travel", "can travel"], answer: 1, rule: "Unfulfilled Past Ability", exp: "<div class='exp-en'>💡 <b>Explanation:</b> 'could have traveled' means I had the ability/choice to do it but chose not to.</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> (كان يقدر بس معملش).. كان يقدر يسافر بالعربية بس اختار القطر (could have traveled).</div>", zatona: "كان عندي القدرة أسافر بالعربية بس اخترت القطر بمزاجي (could have + PP)." }
 ];
 
+let typeInterval = null;
+
 let timeAttackLevel = 0;
 let isTimeAttack = false;
 
@@ -755,7 +749,6 @@ function startQuiz() {
     startTimer(); loadQuestion();
 }
 
-let typeInterval;
 function loadQuestion() {
     updateChromaShift();
     if(isTimeAttack) { qTimeLeft = timeAttackLevel; document.getElementById("timer-box").classList.remove("danger"); document.getElementById("timer-text").innerText = `00:${qTimeLeft < 10 ? '0' + qTimeLeft : qTimeLeft}`; }
@@ -763,7 +756,9 @@ function loadQuestion() {
     const item = quizData[currentQuestion];
     const optionsList = document.getElementById("options-list");
     
-    clearInterval(typeInterval); optionsList.classList.remove("show-options"); optionsList.innerHTML = "";
+    if (typeInterval) clearInterval(typeInterval); 
+    optionsList.classList.remove("show-options"); 
+    optionsList.innerHTML = "";
 
     item.options.forEach((opt, oIndex) => {
         const div = document.createElement("div"); div.className = "option-item";
@@ -805,13 +800,13 @@ function togglePause() {
     else {
         if (pauseCount >= 3) { alert("استنفدت كل محاولات الإيقاف (3/3)!"); return; }
         isPaused = true; pauseCount++; clearInterval(timerInterval);
-        document.getElementById('pause-count-msg').innerText = `استخدمت (${pauseCount} من 3) محاولات الإيقاف.`;
+        document.getElementById('pause-count-msg').innerText = `استخدمت (${pauseCount} من 3) محاولات إيقاف.`;
         document.getElementById('pause-modal').style.display = 'flex';
     }
 }
 
 function startTimer() {
-    clearInterval(timerInterval);
+    if (timerInterval) clearInterval(timerInterval);
     timerInterval = setInterval(() => {
         if (isPaused) return;
         if(isTimeAttack) {
@@ -836,7 +831,7 @@ function startTimer() {
 function calculateScore() {
     if(isSubmitting) return; isSubmitting = true;
     try {
-        clearInterval(timerInterval);
+        if (timerInterval) clearInterval(timerInterval);
         document.getElementById("start-body").style.display = "none";
         document.getElementById("timer-container").style.display = "none";
         document.getElementById("eye-care-container").style.display = "none";
