@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <!-- Theme Name: Platinum Crystal (Titanium V.Max - Print Master V.MAX) - PERFECTED AUDIT -->
+    <!-- Theme Name: Platinum Crystal (Titanium V.Max - Print Master V.MAX) - WATERMARK LOGO ONLY -->
     <title>🌟 التحدي الأكبر 🚀</title>
 
     <meta property="og:title" content="🌟 التحدي الأكبر 🚀">
@@ -50,10 +50,9 @@
         /* Header Setup */
         header { padding: 75px 20px 30px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; border-bottom: 1px solid rgba(0,0,0,0.05); position: relative; }
         
-        /* 🔥 PERFECTED TOP BAR CONTROLS (Timer/Pause/Hide on Left, A+/A- on Right) 🔥 */
-        .top-bar-controls { position: absolute; top: 20px; left: 0; width: 100%; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; z-index: 20; }
-        .left-controls { display: flex; align-items: center; gap: 8px; direction: ltr; }
-        .right-controls { display: flex; align-items: center; gap: 8px; direction: ltr; }
+        .top-bar-controls { position: absolute; top: 20px; left: 0; width: 100%; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; z-index: 20; direction: ltr !important; }
+        .left-controls { display: flex; align-items: center; gap: 8px; }
+        .right-controls { display: flex; align-items: center; gap: 8px; }
         
         header img { width: 115px; height: 115px; object-fit: contain; background-color: #FFFFFF !important; padding: 6px; border-radius: 50%; border: 3px solid var(--accent); box-shadow: 0 10px 25px var(--accent-glow); cursor: pointer; flex-shrink: 0; aspect-ratio: 1/1; }
         header h1 { font-family: 'Outfit', sans-serif; font-size: 32px; font-weight: 900; margin: 10px 0 0; direction: ltr;}
@@ -198,9 +197,10 @@
             .footer-content { display: flex; justify-content: space-between; align-items: center; padding: 5mm 15mm 15mm; border-top: 2px solid #000; font-family: 'Outfit'; font-weight: bold; font-size: 14px; color: #000; }
             .page-number:after { counter-increment: page; content: "Page " counter(page); }
 
+            /* 🔥 WATERMARK FIX: Logo Only as requested 🔥 */
             .print-watermark { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0.08; z-index: 9999; pointer-events: none; -webkit-print-color-adjust: exact; print-color-adjust: exact; text-align: center; }
-            .print-watermark img { width: 350px; height: 350px; border-radius: 50%; filter: grayscale(100%); margin-bottom: 20px;}
-            .print-watermark h1 { font-family: 'Outfit'; font-size: 70px; font-weight: 900; color: #000; }
+            .print-watermark img { width: 350px; height: 350px; border-radius: 50%; filter: grayscale(100%); display: block; margin: 0 auto;}
+            .print-watermark h1 { display: none !important; }
 
             .exam-title-box { text-align: center; margin-bottom: 10mm; padding: 0 15mm;}
             .exam-title-box h2 { font-family: 'Outfit'; font-size: 28px; font-weight: 900; color: #000; text-transform: uppercase; margin-bottom: 10px; }
@@ -268,7 +268,6 @@
             .avatar-grid { gap: 10px; }
             .avatar-option { font-size: 26px; padding: 10px 14px; }
             
-            /* 🔥 Fixed Thumb-Reach: NEXT goes to the VERY TOP in column layout */
             .action-btns { flex-direction: column; gap: 14px; margin-top: 35px;}
             .btn { width: 100%; font-size: 16px; padding: 18px; }
             
@@ -311,7 +310,6 @@
 <div id="print-container">
     <div class="print-watermark">
         <img src="https://lh3.googleusercontent.com/d/1BqwA44F0BAwWMSwBnBeDIkfkNgBEtif-" alt="Watermark">
-        <h1>Mr. Ayman Kamel</h1>
     </div>
     <table class="print-table">
         <thead class="print-thead">
@@ -360,8 +358,8 @@
 <div class="main-container" id="app-container">
     
     <header class="no-print">
+        <!-- 🔥 TOP BAR CONTROLS: Left (Timer/Pause/Hide) & Right (Font A+/A-) 🔥 -->
         <div class="top-bar-controls">
-            <!-- Left Controls: Timer, Pause, Hide Timer -->
             <div class="left-controls">
                 <div class="time-controls" id="timer-container" style="display: none;">
                     <div class="timer-box" id="timer-box"><div class="time-dot"></div><span id="timer-text">--:--</span></div>
@@ -369,7 +367,6 @@
                     <button type="button" class="icon-btn" id="btn-timer-view" onclick="toggleTimerView()" title="إخفاء الوقت">⏱️</button>
                 </div>
             </div>
-            <!-- Right Controls: Font Size A+ / A- -->
             <div class="right-controls">
                 <div class="eye-care-controls" id="eye-care-container" style="display: none;">
                     <button type="button" class="icon-btn" onclick="changeFontSize(2)" title="تكبير الخط">A+</button>
@@ -477,7 +474,7 @@
 
         <div class="result-actions no-print">
             <button type="button" class="btn btn-outline" style="background:#F8FAFC; border-color:#E2E8F0; color:var(--text-main);" onclick="printBlankExam()">🖨️ طباعة كاختبار ورقي</button>
-            <button type="button" class="btn btn-outline" style="background:#F8FAFC; border-color:#E2E8F0; color:var(--text-main);" onclick="printSmartNotes()">📥 طباعة مذكرة الأخطاء (شرح)</button>
+            <button type="button" class="btn btn-outline" style="background:#F8FAFC; border-color:#E2E8F0; color:var(--text-main);" onclick="printSmartNotes()">📥 مذكرة الأخطاء (شرح)</button>
             
             <button type="button" class="btn btn-solid btn-full" id="cert-btn" onclick="downloadCertificate()" style="display: none;">📜 استخراج شهادة النخبة</button>
             <button type="button" class="btn btn-outline btn-whatsapp" onclick="shareToTeacherWhatsApp()">👨‍🏫 إرسال التقرير لمستر أيمن</button>
@@ -663,6 +660,8 @@ const rawData = [
     { q: "60. I traveled by train, but I ........ by car.", options: ["might have traveled", "could have traveled", "could travel", "can travel"], answer: 1, rule: "Unfulfilled Past Ability", exp: "<div class='exp-en'>💡 <b>Explanation:</b> 'could have traveled' means I had the ability/choice to do it but chose not to.</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> (كان يقدر بس معملش).. كان يقدر يسافر بالعربية بس اختار القطر (could have traveled).</div>", zatona: "كان عندي القدرة أسافر بالعربية بس اخترت القطر بمزاجي (could have + PP)." }
 ];
 
+let typeInterval = null;
+
 let timeAttackLevel = 0;
 let isTimeAttack = false;
 
@@ -752,8 +751,6 @@ function startQuiz() {
     document.getElementById("hud-name").innerText = studentName;
     document.getElementById("hud-moving-avatar").innerText = selectedAvatar;
     document.getElementById("print-doc-student").innerText = studentName;
-    
-    // 🔥 AUDIT FIX: Sync Avatar on Result Screen 🔥
     document.getElementById("res-avatar").innerText = selectedAvatar;
 
     totalSeconds = quizData.length * 240; 
@@ -921,7 +918,6 @@ function calculateScore() {
         document.body.className = "theme-1"; 
         
         document.getElementById("res-name").innerText = studentName;
-        // 🔥 AUDIT FIX: Synchronized Print Score ID 🔥
         document.getElementById("print-score-out").innerText = `${score} / ${quizData.length}`;
         document.getElementById("score-percentage").innerText = `${score} / ${quizData.length}`;
         document.getElementById("score-percent-text").innerText = `Accuracy: ${percent}%`;
