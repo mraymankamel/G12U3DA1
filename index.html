@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <!-- Theme Name: Platinum Crystal (Titanium V.Max - Print Master Engine V.MAX) -->
+    <!-- Theme Name: Platinum Crystal (Titanium V.Max - Print Master Engine V.MAX Edition) - BUG FIXED -->
     <title>🌟 التحدي الأكبر 🚀</title>
 
     <meta property="og:title" content="🌟 التحدي الأكبر 🚀">
@@ -81,12 +81,12 @@
         .welcome-card { background: #FFFFFF; border-radius: 20px; padding: 45px 25px; margin-bottom: 30px; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 10px 30px rgba(0,0,0,0.02); }
         .welcome-card h3 { font-size: 26px; font-weight: 900; color: var(--accent); margin-bottom: 20px;}
         
-        /* 🔥 MODIFIED: Time Attack Grid (Column) */
+        /* Time Attack Grid (Column) */
         .ta-grid { display: flex; flex-direction: column; gap: 12px; margin-bottom: 30px; }
         .ta-btn { background: #FFFFFF; color: var(--text-muted); border: 2px solid #E2E8F0; padding: 16px; font-size: 16px; border-radius: 14px; font-weight: 800; font-family: 'Outfit', 'Cairo'; cursor: pointer; transition: 0.3s;}
         .ta-btn.active { background: var(--accent-glow); color: var(--accent); border-color: var(--accent); box-shadow: 0 5px 15px var(--accent-glow); transform: scale(1.02); }
 
-        /* 🔥 MODIFIED: Avatar Grid (Strict Single Row) */
+        /* Avatar Grid (Strict Single Row) */
         .avatar-grid { display: flex; justify-content: center; align-items: center; gap: 15px; margin-bottom: 35px; flex-wrap: nowrap; overflow-x: auto; padding-bottom: 5px;}
         .avatar-option { font-size: 34px; padding: 14px 20px; background: #FFFFFF; border-radius: 16px; cursor: pointer; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 4px 12px rgba(0,0,0,0.02); transition: 0.3s; flex-shrink: 0;}
         .avatar-option.selected { background: #F8FAFC; border-color: var(--accent); box-shadow: 0 10px 25px var(--accent-glow); transform: scale(1.1) translateY(-5px);}
@@ -210,6 +210,8 @@
             .info-field { display: flex; align-items: flex-end; flex: 1; }
             .info-label { margin-right: 10px; white-space: nowrap; }
             .info-line { border-bottom: 2px dotted #000; flex: 1; min-height: 20px; padding-bottom: 2px; text-align: center;}
+            /* 🔥 BUG FIX: Ensure student name prints properly in the dotted line */
+            #print-doc-student { font-size: 18px; color: #000; }
 
             /* Q Layout */
             .print-q-container { padding: 0 15mm; }
@@ -329,7 +331,7 @@
                     <div class="exam-title-box">
                         <h2 id="print-title-out">DEDUCTION & MODALS (60 QS)</h2>
                         <div class="student-info-row">
-                            <div class="info-field"><span class="info-label">Student Name:</span><div class="info-line"></div></div>
+                            <div class="info-field"><span class="info-label">Student Name:</span><div class="info-line" id="print-doc-student"></div></div>
                             <div class="info-field"><span class="info-label">Score:</span><div class="info-line" style="flex: 0.5;"></div><span style="margin-left: 10px;" id="print-score-out">/ 60</span></div>
                         </div>
                     </div>
@@ -612,7 +614,7 @@ const rawData = [
     { q: "18. I'm not sure when Lamia will come. She ........ at any time.", options: ["must arrive", "could arrive", "may have arrived", "can't arrive"], answer: 1, rule: "Future Possibility", exp: "<div class='exp-en'>💡 <b>Explanation:</b> 'not sure' for a future event uses 'could' or 'might' + base verb.</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> مش متأكد من موعد وصولها في المستقبل، فنستخدم (could arrive).</div>", zatona: "احتمال في المستقبل مفيش تأكيد (could / might + base)." },
     { q: "19. You ........ the door. It was open when I got home.", options: ["might have locked", "must have locked", "can't have locked", "can't lock"], answer: 2, rule: "Past Deduction (Negative)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> It was open, so it's impossible you locked it ('can't have locked').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> الباب كان مفتوح، يبقى (مستحيل) تكون قفلته (can't have locked).</div>", zatona: "كان مفتوح، يبقى (مستحيل) تكون قفلته زمان (can't have locked)." },
     { q: "20. Kamal ........ by train yesterday. Who knows?", options: ["might have traveled", "must have traveled", "shouldn't have traveled", "can't have traveled"], answer: 0, rule: "Past Deduction (Unsure)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> 'Who knows?' implies uncertainty, so we use 'might have + P.P'.</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> عبارة (مين عارف؟) بتدل على الاحتمال في الماضي، نختار (might have traveled).</div>", zatona: "مين عارف؟ يعني (احتمال) يكون سافر كده زمان (might have + PP)." },
-    { q: "21. Since you have been working for hours, you ........ tired now.", options: ["might have been", "must have been", "can't be", "must be"], answer: 3, rule: "Present Deduction (Sure)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> You worked for hours, so we are sure you are tired right now ('must be').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> شغال بقالك ساعات، يبقى (أكيد) إنت تعبان دلوقتي (must be).</div>", zatona: "شغال بقالك كتير، يبقى (أكيد) مرهق دلوقتي (must be)." },
+    { q: "21. Since you have been working for hours, you ........ tired now.", options: ["might have been", "must have been", "can't be", "must be"], answer: 3, rule: "Present Deduction (Sure)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> You worked for hours, so we are sure you are tired right now ('must be').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> شغال بقالك ساعات، يبقى (أكيد) إنت تعبان دلوقتي (must be).</div>", zatona: "تعبان من الشغل، يبقى (أكيد) إنت مرهق دلوقتي (must be)." },
     { q: "22. Winning the first prize last year ........ Ali very happy.", options: ["will have made", "must have made", "can't make", "mustn't make"], answer: 1, rule: "Past Deduction (Sure)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> It's logical and certain that winning made him happy in the past ('must have made').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> الفوز بالجايزة (أكيد) خلاه مبسوط زمان (must have made).</div>", zatona: "كسب الجايزة، يبقى (أكيد) كان مبسوط زمان (must have made)." },
     { q: "23. It's strange that he hasn't phoned. He ........ lost his phone.", options: ["might have", "must have been", "can't have", "should have"], answer: 0, rule: "Past Deduction (Unsure)", exp: "<div class='exp-en'>💡 <b>Explanation:</b> We don't know why he didn't phone, so it's a possibility ('might have lost').</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> متصلش ليه؟ (احتمال) يكون ضيع تليفونه (might have).</div>", zatona: "مفيش سبب واضح، فده (احتمال) في الماضي (might have + PP)." },
     { q: "24. Why did you run across the road? You ........ injured.", options: ["must have", "can't have", "could have been", "should have"], answer: 2, rule: "Unfulfilled Past Possibility", exp: "<div class='exp-en'>💡 <b>Explanation:</b> 'could have been' shows something that was possible but didn't happen (a danger avoided).</div><div class='exp-separator'></div><div class='exp-ar'>✨ <b>الخلاصة:</b> بتجري في الشارع ليه؟ إنت (كان ممكن) تتصاب بس محصلش (could have been).</div>", zatona: "كان ممكن يحصلك حاجة وحشة بس ربنا ستر (could have been)." },
@@ -803,7 +805,7 @@ function togglePause() {
     else {
         if (pauseCount >= 3) { alert("استنفدت كل محاولات الإيقاف (3/3)!"); return; }
         isPaused = true; pauseCount++; clearInterval(timerInterval);
-        document.getElementById('pause-count-msg').innerText = `استخدمت (${pauseCount} من 3) محاولات إيقاف.`;
+        document.getElementById('pause-count-msg').innerText = `استخدمت (${pauseCount} من 3) محاولات الإيقاف.`;
         document.getElementById('pause-modal').style.display = 'flex';
     }
 }
